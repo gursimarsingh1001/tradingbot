@@ -1,1 +1,2996 @@
-[]
+[
+  {
+    "symbol": "360ONE",
+    "bseScripcode": "542772",
+    "isin": "INE466L01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "3MINDIA",
+    "bseScripcode": "523395",
+    "isin": "INE470A01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AADHARHFC",
+    "bseScripcode": "544176",
+    "isin": "INE883F01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AARTIIND",
+    "bseScripcode": "524208",
+    "isin": "INE769A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AAVAS",
+    "bseScripcode": "541988",
+    "isin": "INE216P01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABB",
+    "bseScripcode": "500002",
+    "isin": "INE117A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABBOTINDIA",
+    "bseScripcode": "500488",
+    "isin": "INE358A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABCAPITAL",
+    "bseScripcode": "540691",
+    "isin": "INE674K01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABDL",
+    "bseScripcode": "544203",
+    "isin": "INE552Z01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABFRL",
+    "bseScripcode": "535755",
+    "isin": "INE647O01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABLBL",
+    "bseScripcode": "544403",
+    "isin": "INE14LE01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABREL",
+    "bseScripcode": "500040",
+    "isin": "INE055A01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ABSLAMC",
+    "bseScripcode": "543374",
+    "isin": "INE404A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ACC",
+    "bseScripcode": "500410",
+    "isin": "INE012A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ACE",
+    "bseScripcode": "532762",
+    "isin": "INE731H01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ACMESOLAR",
+    "bseScripcode": "544283",
+    "isin": "INE622W01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ACUTAAS",
+    "bseScripcode": "543349",
+    "isin": "INE00FF01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ADANIENSOL",
+    "bseScripcode": "539254",
+    "isin": "INE931S01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ADANIENT",
+    "bseScripcode": "512599",
+    "isin": "INE423A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ADANIGREEN",
+    "bseScripcode": "541450",
+    "isin": "INE364U01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ADANIPORTS",
+    "bseScripcode": "532921",
+    "isin": "INE742F01042",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ADANIPOWER",
+    "bseScripcode": "533096",
+    "isin": "INE814H01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AEGISLOG",
+    "bseScripcode": "500003",
+    "isin": "INE208C01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AEGISVOPAK",
+    "bseScripcode": "544407",
+    "isin": "INE0INX01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AFCONS",
+    "bseScripcode": "544280",
+    "isin": "INE101I01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AFFLE",
+    "bseScripcode": "542752",
+    "isin": "INE00WC01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AIAENG",
+    "bseScripcode": "532683",
+    "isin": "INE212H01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AIIL",
+    "bseScripcode": "539177",
+    "isin": "INE206F01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AJANTPHARM",
+    "bseScripcode": "532331",
+    "isin": "INE031B01049",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AKZOINDIA",
+    "bseScripcode": "500710",
+    "isin": "INE133A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ALKEM",
+    "bseScripcode": "539523",
+    "isin": "INE540L01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AMBER",
+    "bseScripcode": "540902",
+    "isin": "INE371P01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AMBUJACEM",
+    "bseScripcode": "500425",
+    "isin": "INE079A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ANANDRATHI",
+    "bseScripcode": "543415",
+    "isin": "INE463V01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ANANTRAJ",
+    "bseScripcode": "515055",
+    "isin": "INE242C01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ANGELONE",
+    "bseScripcode": "543235",
+    "isin": "INE732I01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ANTHEM",
+    "bseScripcode": "544449",
+    "isin": "INE0CZ201020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ANURAS",
+    "bseScripcode": "543275",
+    "isin": "INE930P01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "APARINDS",
+    "bseScripcode": "532259",
+    "isin": "INE372A01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "APLAPOLLO",
+    "bseScripcode": "533758",
+    "isin": "INE702C01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "bseScripcode": "508869",
+    "isin": "INE437A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "APOLLOTYRE",
+    "bseScripcode": "500877",
+    "isin": "INE438A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "APTUS",
+    "bseScripcode": "543335",
+    "isin": "INE852O01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ARE&M",
+    "bseScripcode": "500008",
+    "isin": "INE885A01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ASAHIINDIA",
+    "bseScripcode": "515030",
+    "isin": "INE439A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ASHOKLEY",
+    "bseScripcode": "500477",
+    "isin": "INE208A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "bseScripcode": "500820",
+    "isin": "INE021A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ASTERDM",
+    "bseScripcode": "540975",
+    "isin": "INE914M01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ASTRAL",
+    "bseScripcode": "532830",
+    "isin": "INE006I01046",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ATGL",
+    "bseScripcode": "542066",
+    "isin": "INE399L01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ATHERENERG",
+    "bseScripcode": "544397",
+    "isin": "INE0LEZ01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ATUL",
+    "bseScripcode": "500027",
+    "isin": "INE100A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AUBANK",
+    "bseScripcode": "540611",
+    "isin": "INE949L01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AUROPHARMA",
+    "bseScripcode": "524804",
+    "isin": "INE406A01037",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AWL",
+    "bseScripcode": "543458",
+    "isin": "INE699H01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "AXISBANK",
+    "bseScripcode": "532215",
+    "isin": "INE238A01034",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "bseScripcode": "532977",
+    "isin": "INE917I01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "bseScripcode": "532978",
+    "isin": "INE918I01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAJAJHFL",
+    "bseScripcode": "544252",
+    "isin": "INE377Y01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAJAJHLDNG",
+    "bseScripcode": "500490",
+    "isin": "INE118A01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "bseScripcode": "500034",
+    "isin": "INE296A01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BALKRISIND",
+    "bseScripcode": "502355",
+    "isin": "INE787D01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BALRAMCHIN",
+    "bseScripcode": "500038",
+    "isin": "INE119A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BANDHANBNK",
+    "bseScripcode": "541153",
+    "isin": "INE545U01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BANKBARODA",
+    "bseScripcode": "532134",
+    "isin": "INE028A01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BANKINDIA",
+    "bseScripcode": "532149",
+    "isin": "INE084A01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BATAINDIA",
+    "bseScripcode": "500043",
+    "isin": "INE176A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BAYERCROP",
+    "bseScripcode": "506285",
+    "isin": "INE462A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BBTC",
+    "bseScripcode": "501425",
+    "isin": "INE050A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BDL",
+    "bseScripcode": "541143",
+    "isin": "INE171Z01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BEL",
+    "bseScripcode": "500049",
+    "isin": "INE263A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BELRISE",
+    "bseScripcode": "544405",
+    "isin": "INE894V01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BEML",
+    "bseScripcode": "500048",
+    "isin": "INE258A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BERGEPAINT",
+    "bseScripcode": "509480",
+    "isin": "INE463A01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BHARATFORG",
+    "bseScripcode": "500493",
+    "isin": "INE465A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "bseScripcode": "532454",
+    "isin": "INE397D01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BHARTIHEXA",
+    "bseScripcode": "544162",
+    "isin": "INE343G01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BHEL",
+    "bseScripcode": "500103",
+    "isin": "INE257A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BIKAJI",
+    "bseScripcode": "543653",
+    "isin": "INE00E101023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BIOCON",
+    "bseScripcode": "532523",
+    "isin": "INE376G01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BLS",
+    "bseScripcode": "540073",
+    "isin": "INE153T01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BLUEDART",
+    "bseScripcode": "526612",
+    "isin": "INE233B01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BLUEJET",
+    "bseScripcode": "544009",
+    "isin": "INE0KBH01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BLUESTARCO",
+    "bseScripcode": "500067",
+    "isin": "INE472A01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BOSCHLTD",
+    "bseScripcode": "500530",
+    "isin": "INE323A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BPCL",
+    "bseScripcode": "500547",
+    "isin": "INE029A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BRIGADE",
+    "bseScripcode": "532929",
+    "isin": "INE791I01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BRITANNIA",
+    "bseScripcode": "500825",
+    "isin": "INE216A01030",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "BSOFT",
+    "bseScripcode": "532400",
+    "isin": "INE836A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CAMS",
+    "bseScripcode": "543232",
+    "isin": "INE596I01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CANBK",
+    "bseScripcode": "532483",
+    "isin": "INE476A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CANFINHOME",
+    "bseScripcode": "511196",
+    "isin": "INE477A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CANHLIFE",
+    "bseScripcode": "544583",
+    "isin": "INE01TY01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CAPLIPOINT",
+    "bseScripcode": "524742",
+    "isin": "INE475E01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CARBORUNIV",
+    "bseScripcode": "513375",
+    "isin": "INE120A01034",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CARTRADE",
+    "bseScripcode": "543333",
+    "isin": "INE290S01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CASTROLIND",
+    "bseScripcode": "500870",
+    "isin": "INE172A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CCL",
+    "bseScripcode": "519600",
+    "isin": "INE421D01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CDSL",
+    "bseScripcode": "511194",
+    "isin": "INE736A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CEATLTD",
+    "bseScripcode": "500878",
+    "isin": "INE482A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CEMPRO",
+    "bseScripcode": "509496",
+    "isin": "INE686A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CENTRALBK",
+    "bseScripcode": "532885",
+    "isin": "INE483A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CESC",
+    "bseScripcode": "500084",
+    "isin": "INE486A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CGCL",
+    "bseScripcode": "531595",
+    "isin": "INE180C01042",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CGPOWER",
+    "bseScripcode": "500093",
+    "isin": "INE067A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHALET",
+    "bseScripcode": "542399",
+    "isin": "INE427F01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHAMBLFERT",
+    "bseScripcode": "500085",
+    "isin": "INE085A01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHENNPETRO",
+    "bseScripcode": "500110",
+    "isin": "INE178A01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHOICEIN",
+    "bseScripcode": "531358",
+    "isin": "INE102B01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHOLAFIN",
+    "bseScripcode": "511243",
+    "isin": "INE121A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CHOLAHLDNG",
+    "bseScripcode": "504973",
+    "isin": "INE149A01033",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CIPLA",
+    "bseScripcode": "500087",
+    "isin": "INE059A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CLEAN",
+    "bseScripcode": "543318",
+    "isin": "INE227W01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COALINDIA",
+    "bseScripcode": "533278",
+    "isin": "INE522F01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COCHINSHIP",
+    "bseScripcode": "540678",
+    "isin": "INE704P01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COFORGE",
+    "bseScripcode": "532541",
+    "isin": "INE591G01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COHANCE",
+    "bseScripcode": "543064",
+    "isin": "INE03QK01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COLPAL",
+    "bseScripcode": "500830",
+    "isin": "INE259A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CONCOR",
+    "bseScripcode": "531344",
+    "isin": "INE111A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CONCORDBIO",
+    "bseScripcode": "543960",
+    "isin": "INE338H01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "COROMANDEL",
+    "bseScripcode": "506395",
+    "isin": "INE169A01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CPPLUS",
+    "bseScripcode": "544466",
+    "isin": "INE819V01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CRAFTSMAN",
+    "bseScripcode": "543276",
+    "isin": "INE00LO01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CREDITACC",
+    "bseScripcode": "541770",
+    "isin": "INE741K01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CRISIL",
+    "bseScripcode": "500092",
+    "isin": "INE007A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CROMPTON",
+    "bseScripcode": "539876",
+    "isin": "INE299U01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CUB",
+    "bseScripcode": "532210",
+    "isin": "INE491A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CUMMINSIND",
+    "bseScripcode": "500480",
+    "isin": "INE298A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "CYIENT",
+    "bseScripcode": "532175",
+    "isin": "INE136B01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DABUR",
+    "bseScripcode": "500096",
+    "isin": "INE016A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DALBHARAT",
+    "bseScripcode": "542216",
+    "isin": "INE00R701025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DATAPATTNS",
+    "bseScripcode": "543428",
+    "isin": "INE0IX101010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DCMSHRIRAM",
+    "bseScripcode": "523367",
+    "isin": "INE499A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DEEPAKFERT",
+    "bseScripcode": "500645",
+    "isin": "INE501A01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DEEPAKNTR",
+    "bseScripcode": "506401",
+    "isin": "INE288B01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DELHIVERY",
+    "bseScripcode": "543529",
+    "isin": "INE148O01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DEVYANI",
+    "bseScripcode": "543330",
+    "isin": "INE872J01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DIVISLAB",
+    "bseScripcode": "532488",
+    "isin": "INE361B01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DIXON",
+    "bseScripcode": "540699",
+    "isin": "INE935N01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DLF",
+    "bseScripcode": "532868",
+    "isin": "INE271C01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DMART",
+    "bseScripcode": "540376",
+    "isin": "INE192R01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DOMS",
+    "bseScripcode": "544045",
+    "isin": "INE321T01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "DRREDDY",
+    "bseScripcode": "500124",
+    "isin": "INE089A01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ECLERX",
+    "bseScripcode": "532927",
+    "isin": "INE738I01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EICHERMOT",
+    "bseScripcode": "505200",
+    "isin": "INE066A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EIDPARRY",
+    "bseScripcode": "500125",
+    "isin": "INE126A01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EIHOTEL",
+    "bseScripcode": "500840",
+    "isin": "INE230A01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ELECON",
+    "bseScripcode": "505700",
+    "isin": "INE205B01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ELGIEQUIP",
+    "bseScripcode": "522074",
+    "isin": "INE285A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EMAMILTD",
+    "bseScripcode": "531162",
+    "isin": "INE548C01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EMCURE",
+    "bseScripcode": "544210",
+    "isin": "INE168P01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EMMVEE",
+    "bseScripcode": "544608",
+    "isin": "INE1C6T01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ENDURANCE",
+    "bseScripcode": "540153",
+    "isin": "INE913H01037",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ENGINERSIN",
+    "bseScripcode": "532178",
+    "isin": "INE510A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ENRIN",
+    "bseScripcode": "544390",
+    "isin": "INE1NPP01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ERIS",
+    "bseScripcode": "540596",
+    "isin": "INE406M01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ESCORTS",
+    "bseScripcode": "500495",
+    "isin": "INE042A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ETERNAL",
+    "bseScripcode": "543320",
+    "isin": "INE758T01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "EXIDEIND",
+    "bseScripcode": "500086",
+    "isin": "INE302A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FACT",
+    "bseScripcode": "590024",
+    "isin": "INE188A01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FEDERALBNK",
+    "bseScripcode": "500469",
+    "isin": "INE171A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FINCABLES",
+    "bseScripcode": "500144",
+    "isin": "INE235A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FIRSTCRY",
+    "bseScripcode": "544226",
+    "isin": "INE02RE01045",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FIVESTAR",
+    "bseScripcode": "543663",
+    "isin": "INE128S01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FLUOROCHEM",
+    "bseScripcode": "542812",
+    "isin": "INE09N301011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FORCEMOT",
+    "bseScripcode": "500033",
+    "isin": "INE451A01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FORTIS",
+    "bseScripcode": "532843",
+    "isin": "INE061F01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "FSL",
+    "bseScripcode": "532809",
+    "isin": "INE684F01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GABRIEL",
+    "bseScripcode": "505714",
+    "isin": "INE524A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GAIL",
+    "bseScripcode": "532155",
+    "isin": "INE129A01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GALLANTT",
+    "bseScripcode": "532726",
+    "isin": "INE297H01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GESHIP",
+    "bseScripcode": "500620",
+    "isin": "INE017A01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GICRE",
+    "bseScripcode": "540755",
+    "isin": "INE481Y01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GILLETTE",
+    "bseScripcode": "507815",
+    "isin": "INE322A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GLAND",
+    "bseScripcode": "543245",
+    "isin": "INE068V01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GLAXO",
+    "bseScripcode": "500660",
+    "isin": "INE159A01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GLENMARK",
+    "bseScripcode": "532296",
+    "isin": "INE935A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GMDCLTD",
+    "bseScripcode": "532181",
+    "isin": "INE131A01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GMRAIRPORT",
+    "bseScripcode": "532754",
+    "isin": "INE776C01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GODFRYPHLP",
+    "bseScripcode": "500163",
+    "isin": "INE260B01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GODIGIT",
+    "bseScripcode": "544179",
+    "isin": "INE03JT01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GODREJCP",
+    "bseScripcode": "532424",
+    "isin": "INE102D01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GODREJIND",
+    "bseScripcode": "500164",
+    "isin": "INE233A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GODREJPROP",
+    "bseScripcode": "533150",
+    "isin": "INE484J01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GPIL",
+    "bseScripcode": "532734",
+    "isin": "INE177H01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GRANULES",
+    "bseScripcode": "532482",
+    "isin": "INE101D01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GRAPHITE",
+    "bseScripcode": "509488",
+    "isin": "INE371A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GRASIM",
+    "bseScripcode": "500300",
+    "isin": "INE047A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GRAVITA",
+    "bseScripcode": "533282",
+    "isin": "INE024L01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GROWW",
+    "bseScripcode": "544603",
+    "isin": "INE0HOQ01053",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GRSE",
+    "bseScripcode": "542011",
+    "isin": "INE382Z01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GSPL",
+    "bseScripcode": "532702",
+    "isin": "INE246F01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "GVT&D",
+    "bseScripcode": "522275",
+    "isin": "INE200A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HAL",
+    "bseScripcode": "541154",
+    "isin": "INE066F01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HAVELLS",
+    "bseScripcode": "517354",
+    "isin": "INE176B01034",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HBLENGINE",
+    "bseScripcode": "517271",
+    "isin": "INE292B01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HCLTECH",
+    "bseScripcode": "532281",
+    "isin": "INE860A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HDBFS",
+    "bseScripcode": "544429",
+    "isin": "INE756I01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HDFCAMC",
+    "bseScripcode": "541729",
+    "isin": "INE127D01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HDFCBANK",
+    "bseScripcode": "500180",
+    "isin": "INE040A01034",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HDFCLIFE",
+    "bseScripcode": "540777",
+    "isin": "INE795G01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HEG",
+    "bseScripcode": "509631",
+    "isin": "INE545A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "bseScripcode": "500182",
+    "isin": "INE158A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HEXT",
+    "bseScripcode": "544362",
+    "isin": "INE093A01041",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HFCL",
+    "bseScripcode": "500183",
+    "isin": "INE548A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HINDALCO",
+    "bseScripcode": "500440",
+    "isin": "INE038A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HINDCOPPER",
+    "bseScripcode": "513599",
+    "isin": "INE531E01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HINDPETRO",
+    "bseScripcode": "500104",
+    "isin": "INE094A01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "bseScripcode": "500696",
+    "isin": "INE030A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HINDZINC",
+    "bseScripcode": "500188",
+    "isin": "INE267A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HOMEFIRST",
+    "bseScripcode": "543259",
+    "isin": "INE481N01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HONASA",
+    "bseScripcode": "544014",
+    "isin": "INE0J5401028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HONAUT",
+    "bseScripcode": "517174",
+    "isin": "INE671A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HSCL",
+    "bseScripcode": "500184",
+    "isin": "INE019C01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HUDCO",
+    "bseScripcode": "540530",
+    "isin": "INE031A01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "HYUNDAI",
+    "bseScripcode": "544274",
+    "isin": "INE0V6F01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ICICIAMC",
+    "bseScripcode": "544658",
+    "isin": "INE346A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ICICIBANK",
+    "bseScripcode": "532174",
+    "isin": "INE090A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ICICIGI",
+    "bseScripcode": "540716",
+    "isin": "INE765G01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ICICIPRULI",
+    "bseScripcode": "540133",
+    "isin": "INE726G01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IDBI",
+    "bseScripcode": "500116",
+    "isin": "INE008A01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IDEA",
+    "bseScripcode": "532822",
+    "isin": "INE669E01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IDFCFIRSTB",
+    "bseScripcode": "539437",
+    "isin": "INE092T01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IEX",
+    "bseScripcode": "540750",
+    "isin": "INE022Q01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IFCI",
+    "bseScripcode": "500106",
+    "isin": "INE039A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IGIL",
+    "bseScripcode": "544311",
+    "isin": "INE0Q9301021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IGL",
+    "bseScripcode": "532514",
+    "isin": "INE203G01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IIFL",
+    "bseScripcode": "532636",
+    "isin": "INE530B01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IKS",
+    "bseScripcode": "544309",
+    "isin": "INE115Q01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDGN",
+    "bseScripcode": "544172",
+    "isin": "INE065X01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDHOTEL",
+    "bseScripcode": "500850",
+    "isin": "INE053A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDIACEM",
+    "bseScripcode": "530005",
+    "isin": "INE383A01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDIAMART",
+    "bseScripcode": "542726",
+    "isin": "INE933S01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDIANB",
+    "bseScripcode": "532814",
+    "isin": "INE562A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDIGO",
+    "bseScripcode": "539448",
+    "isin": "INE646L01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDUSINDBK",
+    "bseScripcode": "532187",
+    "isin": "INE095A01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INDUSTOWER",
+    "bseScripcode": "534816",
+    "isin": "INE121J01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INFY",
+    "bseScripcode": "500209",
+    "isin": "INE009A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INOXWIND",
+    "bseScripcode": "539083",
+    "isin": "INE066P01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "INTELLECT",
+    "bseScripcode": "538835",
+    "isin": "INE306R01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IOB",
+    "bseScripcode": "532388",
+    "isin": "INE565A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IOC",
+    "bseScripcode": "530965",
+    "isin": "INE242A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IPCALAB",
+    "bseScripcode": "524494",
+    "isin": "INE571A01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IRB",
+    "bseScripcode": "532947",
+    "isin": "INE821I01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IRCON",
+    "bseScripcode": "541956",
+    "isin": "INE962Y01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IRCTC",
+    "bseScripcode": "542830",
+    "isin": "INE335Y01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IREDA",
+    "bseScripcode": "544026",
+    "isin": "INE202E01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "IRFC",
+    "bseScripcode": "543257",
+    "isin": "INE053F01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ITC",
+    "bseScripcode": "500875",
+    "isin": "INE154A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ITCHOTELS",
+    "bseScripcode": "544325",
+    "isin": "INE379A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ITI",
+    "bseScripcode": "523610",
+    "isin": "INE248A01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "J&KBANK",
+    "bseScripcode": "532209",
+    "isin": "INE168A01041",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JAINREC",
+    "bseScripcode": "544537",
+    "isin": "INE0YD401026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JBCHEPHARM",
+    "bseScripcode": "506943",
+    "isin": "INE572A01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JBMA",
+    "bseScripcode": "532605",
+    "isin": "INE927D01051",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JINDALSAW",
+    "bseScripcode": "500378",
+    "isin": "INE324A01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JINDALSTEL",
+    "bseScripcode": "532286",
+    "isin": "INE749A01030",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JIOFIN",
+    "bseScripcode": "543940",
+    "isin": "INE758E01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JKCEMENT",
+    "bseScripcode": "532644",
+    "isin": "INE823G01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JKTYRE",
+    "bseScripcode": "530007",
+    "isin": "INE573A01042",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JMFINANCIL",
+    "bseScripcode": "523405",
+    "isin": "INE780C01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JPPOWER",
+    "bseScripcode": "532627",
+    "isin": "INE351F01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JSL",
+    "bseScripcode": "532508",
+    "isin": "INE220G01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JSWCEMENT",
+    "bseScripcode": "544480",
+    "isin": "INE718I01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JSWENERGY",
+    "bseScripcode": "533148",
+    "isin": "INE121E01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JSWINFRA",
+    "bseScripcode": "543994",
+    "isin": "INE880J01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "bseScripcode": "500228",
+    "isin": "INE019A01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JUBLFOOD",
+    "bseScripcode": "533155",
+    "isin": "INE797F01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JUBLINGREA",
+    "bseScripcode": "543271",
+    "isin": "INE0BY001018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JUBLPHARMA",
+    "bseScripcode": "530019",
+    "isin": "INE700A01033",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JWL",
+    "bseScripcode": "533272",
+    "isin": "INE209L01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "JYOTICNC",
+    "bseScripcode": "544081",
+    "isin": "INE980O01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KAJARIACER",
+    "bseScripcode": "500233",
+    "isin": "INE217B01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KALYANKJIL",
+    "bseScripcode": "543278",
+    "isin": "INE303R01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KARURVYSYA",
+    "bseScripcode": "590003",
+    "isin": "INE036D01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KAYNES",
+    "bseScripcode": "543664",
+    "isin": "INE918Z01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KEC",
+    "bseScripcode": "532714",
+    "isin": "INE389H01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KEI",
+    "bseScripcode": "517569",
+    "isin": "INE878B01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KFINTECH",
+    "bseScripcode": "543720",
+    "isin": "INE138Y01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KIMS",
+    "bseScripcode": "543308",
+    "isin": "INE967H01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KIRLOSENG",
+    "bseScripcode": "533293",
+    "isin": "INE146L01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "bseScripcode": "500247",
+    "isin": "INE237A01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KPIL",
+    "bseScripcode": "522287",
+    "isin": "INE220B01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KPITTECH",
+    "bseScripcode": "542651",
+    "isin": "INE04I401011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "KPRMILL",
+    "bseScripcode": "532889",
+    "isin": "INE930H01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LALPATHLAB",
+    "bseScripcode": "539524",
+    "isin": "INE600L01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LATENTVIEW",
+    "bseScripcode": "543398",
+    "isin": "INE0I7C01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LAURUSLABS",
+    "bseScripcode": "540222",
+    "isin": "INE947Q01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LEMONTREE",
+    "bseScripcode": "541233",
+    "isin": "INE970X01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LENSKART",
+    "bseScripcode": "544600",
+    "isin": "INE956O01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LGEINDIA",
+    "bseScripcode": "544576",
+    "isin": "INE324D01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LICHSGFIN",
+    "bseScripcode": "500253",
+    "isin": "INE115A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LICI",
+    "bseScripcode": "543526",
+    "isin": "INE0J1Y01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LINDEINDIA",
+    "bseScripcode": "523457",
+    "isin": "INE473A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LLOYDSME",
+    "bseScripcode": "512455",
+    "isin": "INE281B01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LODHA",
+    "bseScripcode": "543287",
+    "isin": "INE670K01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LT",
+    "bseScripcode": "500510",
+    "isin": "INE018A01030",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LTF",
+    "bseScripcode": "533519",
+    "isin": "INE498L01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LTFOODS",
+    "bseScripcode": "532783",
+    "isin": "INE818H01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LTM",
+    "bseScripcode": "540005",
+    "isin": "INE214T01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LTTS",
+    "bseScripcode": "540115",
+    "isin": "INE010V01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "LUPIN",
+    "bseScripcode": "500257",
+    "isin": "INE326A01037",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "M&M",
+    "bseScripcode": "500520",
+    "isin": "INE101A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "M&MFIN",
+    "bseScripcode": "532720",
+    "isin": "INE774D01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MAHABANK",
+    "bseScripcode": "532525",
+    "isin": "INE457A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MANAPPURAM",
+    "bseScripcode": "531213",
+    "isin": "INE522D01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MANKIND",
+    "bseScripcode": "543904",
+    "isin": "INE634S01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MAPMYINDIA",
+    "bseScripcode": "543425",
+    "isin": "INE0BV301023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MARICO",
+    "bseScripcode": "531642",
+    "isin": "INE196A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MARUTI",
+    "bseScripcode": "532500",
+    "isin": "INE585B01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MAXHEALTH",
+    "bseScripcode": "543220",
+    "isin": "INE027H01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MAZDOCK",
+    "bseScripcode": "543237",
+    "isin": "INE249Z01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MCX",
+    "bseScripcode": "534091",
+    "isin": "INE745G01043",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MEDANTA",
+    "bseScripcode": "543654",
+    "isin": "INE474Q01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MEESHO",
+    "bseScripcode": "544632",
+    "isin": "INE0VDM01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MFSL",
+    "bseScripcode": "500271",
+    "isin": "INE180A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MGL",
+    "bseScripcode": "539957",
+    "isin": "INE002S01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MINDACORP",
+    "bseScripcode": "538962",
+    "isin": "INE842C01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MMTC",
+    "bseScripcode": "513377",
+    "isin": "INE123F01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MOTHERSON",
+    "bseScripcode": "517334",
+    "isin": "INE775A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MOTILALOFS",
+    "bseScripcode": "532892",
+    "isin": "INE338I01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MPHASIS",
+    "bseScripcode": "526299",
+    "isin": "INE356A01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MRF",
+    "bseScripcode": "500290",
+    "isin": "INE883A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MRPL",
+    "bseScripcode": "500109",
+    "isin": "INE103A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MSUMI",
+    "bseScripcode": "543498",
+    "isin": "INE0FS801015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "MUTHOOTFIN",
+    "bseScripcode": "533398",
+    "isin": "INE414G01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NAM-INDIA",
+    "bseScripcode": "540767",
+    "isin": "INE298J01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NATCOPHARM",
+    "bseScripcode": "524816",
+    "isin": "INE987B01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NATIONALUM",
+    "bseScripcode": "532234",
+    "isin": "INE139A01034",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NAUKRI",
+    "bseScripcode": "532777",
+    "isin": "INE663F01032",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NAVA",
+    "bseScripcode": "513023",
+    "isin": "INE725A01030",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NAVINFLUOR",
+    "bseScripcode": "532504",
+    "isin": "INE048G01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NBCC",
+    "bseScripcode": "534309",
+    "isin": "INE095N01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NCC",
+    "bseScripcode": "500294",
+    "isin": "INE868B01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NESTLEIND",
+    "bseScripcode": "500790",
+    "isin": "INE239A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NETWEB",
+    "bseScripcode": "543945",
+    "isin": "INE0NT901020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NEULANDLAB",
+    "bseScripcode": "524558",
+    "isin": "INE794A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NEWGEN",
+    "bseScripcode": "540900",
+    "isin": "INE619B01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NH",
+    "bseScripcode": "539551",
+    "isin": "INE410P01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NHPC",
+    "bseScripcode": "533098",
+    "isin": "INE848E01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NIACL",
+    "bseScripcode": "540769",
+    "isin": "INE470Y01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NIVABUPA",
+    "bseScripcode": "544286",
+    "isin": "INE995S01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NLCINDIA",
+    "bseScripcode": "513683",
+    "isin": "INE589A01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NMDC",
+    "bseScripcode": "526371",
+    "isin": "INE584A01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NSLNISP",
+    "bseScripcode": "543768",
+    "isin": "INE0NNS01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NTPC",
+    "bseScripcode": "532555",
+    "isin": "INE733E01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NTPCGREEN",
+    "bseScripcode": "544289",
+    "isin": "INE0ONG01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NUVAMA",
+    "bseScripcode": "543988",
+    "isin": "INE531F01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NUVOCO",
+    "bseScripcode": "543334",
+    "isin": "INE118D01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "NYKAA",
+    "bseScripcode": "543384",
+    "isin": "INE388Y01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "OBEROIRLTY",
+    "bseScripcode": "533273",
+    "isin": "INE093I01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "OFSS",
+    "bseScripcode": "532466",
+    "isin": "INE881D01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "OIL",
+    "bseScripcode": "533106",
+    "isin": "INE274J01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "OLAELEC",
+    "bseScripcode": "544225",
+    "isin": "INE0LXG01040",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "OLECTRA",
+    "bseScripcode": "532439",
+    "isin": "INE260D01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ONESOURCE",
+    "bseScripcode": "544292",
+    "isin": "INE013P01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ONGC",
+    "bseScripcode": "500312",
+    "isin": "INE213A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PAGEIND",
+    "bseScripcode": "532827",
+    "isin": "INE761H01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PARADEEP",
+    "bseScripcode": "543530",
+    "isin": "INE088F01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PATANJALI",
+    "bseScripcode": "500368",
+    "isin": "INE619A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PAYTM",
+    "bseScripcode": "543396",
+    "isin": "INE982J01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PCBL",
+    "bseScripcode": "506590",
+    "isin": "INE602A01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PERSISTENT",
+    "bseScripcode": "533179",
+    "isin": "INE262H01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PETRONET",
+    "bseScripcode": "532522",
+    "isin": "INE347G01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PFC",
+    "bseScripcode": "532810",
+    "isin": "INE134E01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PFIZER",
+    "bseScripcode": "500680",
+    "isin": "INE182A01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PGEL",
+    "bseScripcode": "533581",
+    "isin": "INE457L01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PHOENIXLTD",
+    "bseScripcode": "503100",
+    "isin": "INE211B01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PIDILITIND",
+    "bseScripcode": "500331",
+    "isin": "INE318A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PIIND",
+    "bseScripcode": "523642",
+    "isin": "INE603J01030",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PINELABS",
+    "bseScripcode": "544606",
+    "isin": "INE15B701018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PIRAMALFIN",
+    "bseScripcode": "544597",
+    "isin": "INE202B01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PNB",
+    "bseScripcode": "532461",
+    "isin": "INE160A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PNBHOUSING",
+    "bseScripcode": "540173",
+    "isin": "INE572E01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POLICYBZR",
+    "bseScripcode": "543390",
+    "isin": "INE417T01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POLYCAB",
+    "bseScripcode": "542652",
+    "isin": "INE455K01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POLYMED",
+    "bseScripcode": "531768",
+    "isin": "INE205C01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POONAWALLA",
+    "bseScripcode": "524000",
+    "isin": "INE511C01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POWERGRID",
+    "bseScripcode": "532898",
+    "isin": "INE752E01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "POWERINDIA",
+    "bseScripcode": "543187",
+    "isin": "INE07Y701011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PPLPHARMA",
+    "bseScripcode": "543635",
+    "isin": "INE0DK501011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PREMIERENE",
+    "bseScripcode": "544238",
+    "isin": "INE0BS701011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PRESTIGE",
+    "bseScripcode": "533274",
+    "isin": "INE811K01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PTCIL",
+    "bseScripcode": "539006",
+    "isin": "INE596F01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PVRINOX",
+    "bseScripcode": "532689",
+    "isin": "INE191H01014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "PWL",
+    "bseScripcode": "544609",
+    "isin": "INE0LP301011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RADICO",
+    "bseScripcode": "532497",
+    "isin": "INE944F01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RAILTEL",
+    "bseScripcode": "543265",
+    "isin": "INE0DD101019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RAINBOW",
+    "bseScripcode": "543524",
+    "isin": "INE961O01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RAMCOCEM",
+    "bseScripcode": "500260",
+    "isin": "INE331A01037",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RBLBANK",
+    "bseScripcode": "540065",
+    "isin": "INE976G01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RECLTD",
+    "bseScripcode": "532955",
+    "isin": "INE020B01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "REDINGTON",
+    "bseScripcode": "532805",
+    "isin": "INE891D01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RELIANCE",
+    "bseScripcode": "500325",
+    "isin": "INE002A01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RHIM",
+    "bseScripcode": "534076",
+    "isin": "INE743M01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RITES",
+    "bseScripcode": "541556",
+    "isin": "INE320J01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RKFORGE",
+    "bseScripcode": "532527",
+    "isin": "INE399G01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RPOWER",
+    "bseScripcode": "532939",
+    "isin": "INE614G01033",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RRKABEL",
+    "bseScripcode": "543981",
+    "isin": "INE777K01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "RVNL",
+    "bseScripcode": "542649",
+    "isin": "INE415G01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAGILITY",
+    "bseScripcode": "544282",
+    "isin": "INE0W2G01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAIL",
+    "bseScripcode": "500113",
+    "isin": "INE114A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAILIFE",
+    "bseScripcode": "544306",
+    "isin": "INE570L01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAMMAANCAP",
+    "bseScripcode": "535789",
+    "isin": "INE148I01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAPPHIRE",
+    "bseScripcode": "543397",
+    "isin": "INE806T01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SARDAEN",
+    "bseScripcode": "504614",
+    "isin": "INE385C01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SAREGAMA",
+    "bseScripcode": "532163",
+    "isin": "INE979A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SBFC",
+    "bseScripcode": "543959",
+    "isin": "INE423Y01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SBICARD",
+    "bseScripcode": "543066",
+    "isin": "INE018E01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SBILIFE",
+    "bseScripcode": "540719",
+    "isin": "INE123W01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SBIN",
+    "bseScripcode": "500112",
+    "isin": "INE062A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SCHAEFFLER",
+    "bseScripcode": "505790",
+    "isin": "INE513A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SCHNEIDER",
+    "bseScripcode": "534139",
+    "isin": "INE839M01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SCI",
+    "bseScripcode": "523598",
+    "isin": "INE109A01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SHREECEM",
+    "bseScripcode": "500387",
+    "isin": "INE070A01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SHRIRAMFIN",
+    "bseScripcode": "511218",
+    "isin": "INE721A01047",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SHYAMMETL",
+    "bseScripcode": "543299",
+    "isin": "INE810G01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SIEMENS",
+    "bseScripcode": "500550",
+    "isin": "INE003A01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SIGNATURE",
+    "bseScripcode": "543990",
+    "isin": "INE903U01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SJVN",
+    "bseScripcode": "533206",
+    "isin": "INE002L01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SOBHA",
+    "bseScripcode": "532784",
+    "isin": "INE671H01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SOLARINDS",
+    "bseScripcode": "532725",
+    "isin": "INE343H01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SONACOMS",
+    "bseScripcode": "543300",
+    "isin": "INE073K01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SONATSOFTW",
+    "bseScripcode": "532221",
+    "isin": "INE269A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SPLPETRO",
+    "bseScripcode": "500405",
+    "isin": "INE663A01033",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SRF",
+    "bseScripcode": "503806",
+    "isin": "INE647A01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "STARHEALTH",
+    "bseScripcode": "543412",
+    "isin": "INE575P01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUMICHEM",
+    "bseScripcode": "542920",
+    "isin": "INE258G01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUNDARMFIN",
+    "bseScripcode": "590071",
+    "isin": "INE660A01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "bseScripcode": "524715",
+    "isin": "INE044A01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUNTV",
+    "bseScripcode": "532733",
+    "isin": "INE424H01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUPREMEIND",
+    "bseScripcode": "509930",
+    "isin": "INE195A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SUZLON",
+    "bseScripcode": "532667",
+    "isin": "INE040H01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SWANCORP",
+    "bseScripcode": "503310",
+    "isin": "INE665A01038",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SWIGGY",
+    "bseScripcode": "544285",
+    "isin": "INE00H001014",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SYNGENE",
+    "bseScripcode": "539268",
+    "isin": "INE398R01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "SYRMA",
+    "bseScripcode": "543573",
+    "isin": "INE0DYJ01015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TARIL",
+    "bseScripcode": "532928",
+    "isin": "INE763I01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATACAP",
+    "bseScripcode": "544574",
+    "isin": "INE976I01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATACHEM",
+    "bseScripcode": "500770",
+    "isin": "INE092A01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATACOMM",
+    "bseScripcode": "500483",
+    "isin": "INE151A01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATACONSUM",
+    "bseScripcode": "500800",
+    "isin": "INE192A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATAELXSI",
+    "bseScripcode": "500408",
+    "isin": "INE670A01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATAINVEST",
+    "bseScripcode": "501301",
+    "isin": "INE672A01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATAPOWER",
+    "bseScripcode": "500400",
+    "isin": "INE245A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATASTEEL",
+    "bseScripcode": "500470",
+    "isin": "INE081A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TATATECH",
+    "bseScripcode": "544028",
+    "isin": "INE142M01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TBOTEK",
+    "bseScripcode": "544174",
+    "isin": "INE673O01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TCS",
+    "bseScripcode": "532540",
+    "isin": "INE467B01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TECHM",
+    "bseScripcode": "532755",
+    "isin": "INE669C01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TECHNOE",
+    "bseScripcode": "542141",
+    "isin": "INE285K01026",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TEGA",
+    "bseScripcode": "543413",
+    "isin": "INE011K01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TEJASNET",
+    "bseScripcode": "540595",
+    "isin": "INE010J01012",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TENNIND",
+    "bseScripcode": "544612",
+    "isin": "INE19RI01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "THELEELA",
+    "bseScripcode": "544408",
+    "isin": "INE0AQ201015",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "THERMAX",
+    "bseScripcode": "500411",
+    "isin": "INE152A01029",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TIINDIA",
+    "bseScripcode": "540762",
+    "isin": "INE974X01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TIMKEN",
+    "bseScripcode": "522113",
+    "isin": "INE325A01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TITAGARH",
+    "bseScripcode": "532966",
+    "isin": "INE615H01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TITAN",
+    "bseScripcode": "500114",
+    "isin": "INE280A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TMCV",
+    "bseScripcode": "544569",
+    "isin": "INE1TAE01010",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TMPV",
+    "bseScripcode": "500570",
+    "isin": "INE155A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TORNTPHARM",
+    "bseScripcode": "500420",
+    "isin": "INE685A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TORNTPOWER",
+    "bseScripcode": "532779",
+    "isin": "INE813H01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TRAVELFOOD",
+    "bseScripcode": "544443",
+    "isin": "INE103V01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TRENT",
+    "bseScripcode": "500251",
+    "isin": "INE849A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TRIDENT",
+    "bseScripcode": "521064",
+    "isin": "INE064C01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TRITURBINE",
+    "bseScripcode": "533655",
+    "isin": "INE152M01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TTML",
+    "bseScripcode": "532371",
+    "isin": "INE517B01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "TVSMOTOR",
+    "bseScripcode": "532343",
+    "isin": "INE494B01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UBL",
+    "bseScripcode": "532478",
+    "isin": "INE686F01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UCOBANK",
+    "bseScripcode": "532505",
+    "isin": "INE691A01018",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "bseScripcode": "532538",
+    "isin": "INE481G01011",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UNIONBANK",
+    "bseScripcode": "532477",
+    "isin": "INE692A01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UNITDSPR",
+    "bseScripcode": "532432",
+    "isin": "INE854D01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UNOMINDA",
+    "bseScripcode": "532539",
+    "isin": "INE405E01023",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UPL",
+    "bseScripcode": "512070",
+    "isin": "INE628A01036",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "URBANCO",
+    "bseScripcode": "544515",
+    "isin": "INE0CAZ01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "USHAMART",
+    "bseScripcode": "517146",
+    "isin": "INE228A01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "UTIAMC",
+    "bseScripcode": "543238",
+    "isin": "INE094J01016",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VBL",
+    "bseScripcode": "540180",
+    "isin": "INE200M01039",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VEDL",
+    "bseScripcode": "500295",
+    "isin": "INE205A01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VIJAYA",
+    "bseScripcode": "543350",
+    "isin": "INE043W01024",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VMM",
+    "bseScripcode": "544307",
+    "isin": "INE01EA01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VOLTAS",
+    "bseScripcode": "500575",
+    "isin": "INE226A01021",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "VTL",
+    "bseScripcode": "502986",
+    "isin": "INE825A01020",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WAAREEENER",
+    "bseScripcode": "544277",
+    "isin": "INE377N01017",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WELCORP",
+    "bseScripcode": "532144",
+    "isin": "INE191B01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WELSPUNLIV",
+    "bseScripcode": "514162",
+    "isin": "INE192B01031",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WHIRLPOOL",
+    "bseScripcode": "500238",
+    "isin": "INE716A01013",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WIPRO",
+    "bseScripcode": "507685",
+    "isin": "INE075A01022",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "WOCKPHARMA",
+    "bseScripcode": "532300",
+    "isin": "INE049B01025",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "YESBANK",
+    "bseScripcode": "532648",
+    "isin": "INE528G01035",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZEEL",
+    "bseScripcode": "505537",
+    "isin": "INE256A01028",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZENSARTECH",
+    "bseScripcode": "504067",
+    "isin": "INE520A01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZENTEC",
+    "bseScripcode": "533339",
+    "isin": "INE251B01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZFCVINDIA",
+    "bseScripcode": "533023",
+    "isin": "INE342J01019",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZYDUSLIFE",
+    "bseScripcode": "532321",
+    "isin": "INE010B01027",
+    "canonicalExchange": "BSE"
+  },
+  {
+    "symbol": "ZYDUSWELL",
+    "bseScripcode": "531335",
+    "isin": "INE768C01028",
+    "canonicalExchange": "BSE"
+  }
+]

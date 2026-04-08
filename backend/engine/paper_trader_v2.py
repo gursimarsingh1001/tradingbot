@@ -273,6 +273,8 @@ class PaperTrader:
         *,
         rules: dict[str, Any],
         shares: int,
+        base_shares: int,
+        position_size_multiplier: float,
         entry_price: float,
         now: datetime,
         plan_only: bool,
@@ -332,6 +334,15 @@ class PaperTrader:
             "fundamental_has_snapshot": signal.get("fundamental_has_snapshot"),
             "fundamental_confidence": signal.get("fundamental_confidence"),
             "financial_data_source": signal.get("financial_data_source"),
+            "source_kind": signal.get("source_kind"),
+            "audit_payload": signal.get("audit_payload", {}),
+            "global_risk_level": signal.get("global_risk_level"),
+            "global_risk_scan_type": signal.get("global_risk_scan_type"),
+            "global_risk_as_of_date": signal.get("global_risk_as_of_date"),
+            "position_size_multiplier": float(position_size_multiplier),
+            "active_global_signals": list(signal.get("active_global_signals") or []),
+            "global_signal_details": dict(signal.get("global_signal_details") or {}),
+            "base_planned_shares": int(base_shares),
             "intelligence_notes": signal.get("intelligence_notes", []),
             "watchlist_reason": signal.get("watchlist_reason"),
             "trigger_style": signal.get("trigger_style", "ENTRY_ZONE"),
@@ -565,6 +576,8 @@ class PaperTrader:
                 signal,
                 rules=rules,
                 shares=shares,
+                base_shares=shares,
+                position_size_multiplier=1.0,
                 entry_price=entry_price,
                 now=now,
                 plan_only=False,
@@ -619,17 +632,21 @@ class PaperTrader:
         *,
         planned_for: date | None = None,
         activation_window_days: int | None = None,
+        position_size_multiplier: float = 1.0,
     ) -> str:
         planned_for = planned_for or self.market_calendar.next_trading_day(datetime.now(tz=settings.tzinfo).date())
         rules = self._resolve_trade_rules(signal)
         entry_price = self._float(signal["entry_price"])
         atr = abs(entry_price - self._float(signal["stop_loss"])) / 2 or self._atr_proxy(entry_price)
         now = datetime.now(tz=settings.tzinfo)
+        position_size_multiplier = max(float(position_size_multiplier), 0.0)
+        if position_size_multiplier <= 0.0:
+            raise ValueError("position_size_multiplier must be greater than 0 for planned trades")
 
         with session_scope() as session:
             bucket_target_capital = self._bucket_target_capital(signal.get("signal_type"), session=session)
             leverage_multiplier = self._float(rules["leverage_multiplier"], 1.0)
-            shares = max(
+            base_shares = max(
                 calculate_size(
                     float(signal.get("confidence_score", 70.0)),
                     atr,
@@ -640,10 +657,13 @@ class PaperTrader:
                 ),
                 1,
             )
+            shares = max(int(round(base_shares * position_size_multiplier)), 1)
             metadata = self._build_trade_metadata(
                 signal,
                 rules=rules,
                 shares=shares,
+                base_shares=base_shares,
+                position_size_multiplier=position_size_multiplier,
                 entry_price=entry_price,
                 now=now,
                 plan_only=True,
@@ -775,7 +795,12 @@ class PaperTrader:
         }
         return self.plan_signal_trade(signal, planned_for=planned_for, activation_window_days=1 if signal_type == "INTRADAY" else 5)
 
-    def clear_planned_watchlist_trades(self, *, from_date: date | None = None) -> None:
+    def clear_planned_watchlist_trades(
+        self,
+        *,
+        from_date: date | None = None,
+        signal_type: str | None = None,
+    ) -> None:
         from_date = from_date or datetime.now(tz=settings.tzinfo).date()
         with session_scope() as session:
             trades = session.scalars(
@@ -785,6 +810,8 @@ class PaperTrader:
                 )
             ).all()
             for trade in trades:
+                if signal_type is not None and str(trade.signal_type or "").upper() != str(signal_type).upper():
+                    continue
                 if (trade.metadata_json or {}).get("plan_only"):
                     session.delete(trade)
 

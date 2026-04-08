@@ -228,6 +228,7 @@ class OfficialFinancialPeriod(Base, TimestampMixin):
     eps_basic: Mapped[float | None] = mapped_column(Float, nullable=True)
     operating_cash_flow: Mapped[float | None] = mapped_column(Float, nullable=True)
     total_debt: Mapped[float | None] = mapped_column(Float, nullable=True)
+    total_assets: Mapped[float | None] = mapped_column(Float, nullable=True)
     shareholder_equity: Mapped[float | None] = mapped_column(Float, nullable=True)
     capital_employed: Mapped[float | None] = mapped_column(Float, nullable=True)
     current_assets: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -295,6 +296,7 @@ class OfficialInvestmentSnapshot(Base, TimestampMixin):
     earnings_date: Mapped[datetime | None] = mapped_column(Date, nullable=True)
     market_cap: Mapped[float | None] = mapped_column(Float, nullable=True)
     pe_ratio: Mapped[float | None] = mapped_column(Float, nullable=True)
+    pb_ratio: Mapped[float | None] = mapped_column(Float, nullable=True)
     dividend_yield: Mapped[float | None] = mapped_column(Float, nullable=True)
     industry_pe: Mapped[float | None] = mapped_column(Float, nullable=True)
     week_52_high: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -319,7 +321,105 @@ class OfficialInvestmentSnapshot(Base, TimestampMixin):
     npa_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
     capital_adequacy_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
     source_coverage: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default=dict)
+    data_sources: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default=dict)
     raw_metrics: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default=dict)
+
+
+class ScreenerCache(Base, TimestampMixin):
+    __tablename__ = "screener_cache"
+    __table_args__ = (UniqueConstraint("symbol", name="uq_screener_cache_symbol"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    symbol: Mapped[str] = mapped_column(String(20), index=True)
+    company_name: Mapped[str | None] = mapped_column(String(150), nullable=True)
+    screener_slug: Mapped[str | None] = mapped_column(String(180), nullable=True)
+    source_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    fetched_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
+    data_json: Mapped[dict[str, Any] | None] = mapped_column("data", JSONB, default=dict)
+    raw_payload: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default=dict)
+
+
+class LynchScore(Base, TimestampMixin):
+    __tablename__ = "lynch_scores"
+    __table_args__ = (UniqueConstraint("symbol", "as_of_date", name="uq_lynch_scores_symbol_date"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    symbol: Mapped[str] = mapped_column(String(20), index=True)
+    as_of_date: Mapped[datetime | None] = mapped_column(Date, index=True)
+    lynch_value: Mapped[float | None] = mapped_column(Float, nullable=True)
+    eps_growth_3y_cagr: Mapped[float | None] = mapped_column(Float, nullable=True)
+    dividend_yield: Mapped[float | None] = mapped_column(Float, nullable=True)
+    pe_ratio: Mapped[float | None] = mapped_column(Float, nullable=True)
+    vote_yes: Mapped[bool] = mapped_column(Boolean, default=False)
+    data_complete: Mapped[bool] = mapped_column(Boolean, default=False)
+    missing_fields: Mapped[list[str] | None] = mapped_column(JSONB, default=list)
+    details_json: Mapped[dict[str, Any] | None] = mapped_column("details", JSONB, default=dict)
+
+
+class PiotroskiScore(Base, TimestampMixin):
+    __tablename__ = "piotroski_scores"
+    __table_args__ = (UniqueConstraint("symbol", "as_of_date", name="uq_piotroski_scores_symbol_date"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    symbol: Mapped[str] = mapped_column(String(20), index=True)
+    as_of_date: Mapped[datetime | None] = mapped_column(Date, index=True)
+    f_score: Mapped[int] = mapped_column(Integer, default=0)
+    vote_yes: Mapped[bool] = mapped_column(Boolean, default=False)
+    data_complete: Mapped[bool] = mapped_column(Boolean, default=False)
+    missing_fields: Mapped[list[str] | None] = mapped_column(JSONB, default=list)
+    signals_json: Mapped[dict[str, Any] | None] = mapped_column("signals", JSONB, default=dict)
+
+
+class MinerviniScore(Base, TimestampMixin):
+    __tablename__ = "minervini_scores"
+    __table_args__ = (UniqueConstraint("symbol", "as_of_date", name="uq_minervini_scores_symbol_date"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    symbol: Mapped[str] = mapped_column(String(20), index=True)
+    as_of_date: Mapped[datetime | None] = mapped_column(Date, index=True)
+    passed_checks: Mapped[int] = mapped_column(Integer, default=0)
+    vote_yes: Mapped[bool] = mapped_column(Boolean, default=False)
+    rs_percentile: Mapped[float | None] = mapped_column(Float, nullable=True)
+    data_complete: Mapped[bool] = mapped_column(Boolean, default=False)
+    missing_fields: Mapped[list[str] | None] = mapped_column(JSONB, default=list)
+    checks_json: Mapped[dict[str, Any] | None] = mapped_column("checks", JSONB, default=dict)
+
+
+class GlobalRiskSnapshot(Base, TimestampMixin):
+    __tablename__ = "global_risk_snapshots"
+    __table_args__ = (UniqueConstraint("as_of_date", "scan_type", name="uq_global_risk_snapshot_date_type"),)
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    as_of_date: Mapped[datetime | None] = mapped_column(Date, index=True)
+    scan_type: Mapped[str] = mapped_column(String(20), index=True)
+    risk_level: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    position_size_multiplier: Mapped[float | None] = mapped_column(Float, nullable=True)
+    vix_current: Mapped[float | None] = mapped_column(Float, nullable=True)
+    vix_5day_avg: Mapped[float | None] = mapped_column(Float, nullable=True)
+    vix_velocity_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
+    vix_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    nifty_prev_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    nifty_today_open: Mapped[float | None] = mapped_column(Float, nullable=True)
+    nifty_gap_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
+    nifty_gap_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    fii_net_today_crores: Mapped[float | None] = mapped_column(Float, nullable=True)
+    fii_consecutive_sell_days: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    fii_cumulative_5day_crores: Mapped[float | None] = mapped_column(Float, nullable=True)
+    fii_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    sp500_prev_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    sp500_latest_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    sp500_change_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
+    sp500_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    crude_prev_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    crude_latest_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    crude_change_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
+    crude_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    usdinr_prev_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    usdinr_latest_close: Mapped[float | None] = mapped_column(Float, nullable=True)
+    usdinr_change_pct: Mapped[float | None] = mapped_column(Float, nullable=True)
+    usdinr_severity: Mapped[str | None] = mapped_column(String(10), nullable=True)
+    active_signals: Mapped[list[str] | None] = mapped_column(JSONB, default=list)
+    signal_details: Mapped[dict[str, Any] | None] = mapped_column(JSONB, default=dict)
 
 
 class BotConfig(Base, TimestampMixin):
@@ -354,6 +454,16 @@ def init_postgres() -> None:
     with engine.begin() as connection:
         connection.execute(text("CREATE EXTENSION IF NOT EXISTS pgcrypto"))
     Base.metadata.create_all(bind=engine)
+    with engine.begin() as connection:
+        connection.execute(
+            text("ALTER TABLE official_financial_periods ADD COLUMN IF NOT EXISTS total_assets DOUBLE PRECISION")
+        )
+        connection.execute(
+            text("ALTER TABLE official_investment_snapshots ADD COLUMN IF NOT EXISTS pb_ratio DOUBLE PRECISION")
+        )
+        connection.execute(
+            text("ALTER TABLE official_investment_snapshots ADD COLUMN IF NOT EXISTS data_sources JSONB DEFAULT '{}'::jsonb")
+        )
     with session_scope() as session:
         ensure_default_scoring_weights(session)
         ensure_default_config(session)

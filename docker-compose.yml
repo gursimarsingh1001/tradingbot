@@ -63,8 +63,7 @@ services:
     working_dir: /app
     command: uvicorn backend.main:app --host 0.0.0.0 --port 8000
     volumes:
-      - ./backend:/app/backend
-      - ./logs:/app/logs
+      - ./:/app
     ports:
       - "8000:8000"
     environment:
@@ -73,6 +72,8 @@ services:
       ANGEL_ONE_CLIENT_ID: ${ANGEL_ONE_CLIENT_ID}
       ANGEL_ONE_PASSWORD: ${ANGEL_ONE_PASSWORD}
       ANGEL_ONE_TOTP_SECRET: ${ANGEL_ONE_TOTP_SECRET}
+      DHAN_CLIENT_ID: ${DHAN_CLIENT_ID}
+      DHAN_ACCESS_TOKEN: ${DHAN_ACCESS_TOKEN}
       NEWS_API_KEY: ${NEWS_API_KEY}
       POSTGRES_URL: postgresql+psycopg://trading_user:trading_password@postgres:5432/trading_bot
       REDIS_URL: redis://redis:6379/0
@@ -82,14 +83,9 @@ services:
       INFLUX_BUCKET: market-data
       SYMBOLS_CONFIG_PATH: /app/backend/config/nifty500_symbols.json
       PAPER_PORTFOLIO_VALUE: 1000000
+      OFFICIAL_INVESTMENT_CUTOVER_ENABLED: ${OFFICIAL_INVESTMENT_CUTOVER_ENABLED}
       FASTAPI_HOST: 0.0.0.0
       FASTAPI_PORT: 8000
-    healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5).read()"]
-      interval: 15s
-      timeout: 10s
-      retries: 6
-      start_period: 90s
     depends_on:
       postgres:
         condition: service_healthy

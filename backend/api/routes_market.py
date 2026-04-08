@@ -81,6 +81,11 @@ class IndexValue(CamelModel):
     value: float
     change: float
     change_pct: float
+    label: str | None = None
+    source: str | None = None
+    updated_at: datetime | None = None
+    status: str | None = None
+    is_delayed: bool = False
 
 
 class Recommendation(CamelModel):
@@ -257,16 +262,20 @@ def _get_upcoming_watchlist_plans(db: Session) -> list[PaperTrade]:
 @router.get("/indices", response_model=dict[str, IndexValue])
 def get_indices() -> dict[str, Any]:
     cache = get_cache()
-    cached = cache.get_json("live:indices", None)
+    cached = cache.get_json("live:benchmarks", None)
     if cached:
         return cached
-    return get_market_data_service().refresh_market_cache(force=True).get(
+    return get_market_data_service().refresh_live_benchmarks(force=True).get(
         "indices",
         {
             "NIFTY50": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
             "BANKNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
             "SENSEX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
-            "INDIA_VIX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+            "FINNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+            "GIFTNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+            "MCX_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+            "BRENT_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+            "USDINR": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
         },
     )
 

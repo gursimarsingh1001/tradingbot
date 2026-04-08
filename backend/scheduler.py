@@ -31,6 +31,10 @@ from backend.engine.alert_dispatcher import AlertDispatcher
 from backend.engine.backup_service import BackupService
 from backend.engine.daily_report_service import DailyReportService
 from backend.engine.fundamental_engine import FundamentalEngine
+from backend.engine.global_risk_scanner import GlobalRiskScanner
+from backend.engine.investment_gate_runner import InvestmentGateRunner
+from backend.engine.official_investment_recommendation_engine import OfficialInvestmentRecommendationEngine
+from backend.engine.investment_scorer import InvestmentScorer
 from backend.engine.official_investment_data_service import OfficialInvestmentDataService
 from backend.engine.official_snapshot_builder import OfficialSnapshotBuilder
 from backend.engine.paper_trader_v2 import PaperTrader
@@ -102,9 +106,24 @@ class TradingSchedulerService:
         self.shadow_comparison_service = ShadowComparisonService(
             data_service=self.official_investment_data_service,
         )
+        self.investment_scorer = InvestmentScorer(
+            historical_fetcher=self.historical_fetcher,
+        )
+        self.investment_gate_runner = InvestmentGateRunner(
+            historical_fetcher=self.historical_fetcher,
+        )
+        self.global_risk_scanner = GlobalRiskScanner(
+            historical_fetcher=self.historical_fetcher,
+        )
         self.news_fetcher = NewsFetcher()
         self.signal_engine = SignalEngine()
         self.paper_trader = PaperTrader()
+        self.official_investment_recommendation_engine = OfficialInvestmentRecommendationEngine(
+            historical_fetcher=self.historical_fetcher,
+            paper_trader=self.paper_trader,
+            gate_runner=self.investment_gate_runner,
+            risk_scanner=self.global_risk_scanner,
+        )
         self.market_calendar = get_market_calendar()
         self.market_data_service = get_market_data_service()
         self.live_intraday_service = get_live_intraday_service()
@@ -113,6 +132,7 @@ class TradingSchedulerService:
         self.daily_report_service = DailyReportService()
         self._last_investment_scan_error_count = 0
         self._last_investment_scan_error_examples: list[str] = []
+        self._last_official_investment_cutover_summary: dict[str, object] = {}
         self._full_news_sync_thread: Thread | None = None
         self._after_market_catchup_thread: Thread | None = None
         self._scheduler_health: dict[str, dict[str, str | None]] = {
@@ -185,13 +205,17 @@ class TradingSchedulerService:
     def _holiday_reason(self, trading_day: date) -> str | None:
         return self.market_calendar.closure_reason(trading_day)
 
+    @staticmethod
+    def _today_local() -> date:
+        return datetime.now(tz=settings.tzinfo).date()
+
     def _notify_holiday_skip(self, *, title: str, body: str) -> None:
         with session_scope() as session:
             existing = session.scalar(
                 select(Notification).where(
                     Notification.type == "MARKET_HOLIDAY",
                     Notification.title == title,
-                    func.date(Notification.created_at) == date.today(),
+                    func.date(Notification.created_at) == self._today_local(),
                 )
             )
             if existing is not None:
@@ -218,7 +242,7 @@ class TradingSchedulerService:
                 symbol
                 for symbol in session.scalars(
                     select(TomorrowWatchlist.symbol)
-                    .where(TomorrowWatchlist.created_date >= date.today())
+                    .where(TomorrowWatchlist.created_date >= self._today_local())
                     .order_by(TomorrowWatchlist.created_at.desc())
                 ).all()
                 if symbol
@@ -411,7 +435,7 @@ class TradingSchedulerService:
                 symbol
                 for symbol in session.scalars(
                     select(TomorrowWatchlist.symbol)
-                    .where(TomorrowWatchlist.created_date >= date.today() - timedelta(days=3))
+                    .where(TomorrowWatchlist.created_date >= self._today_local() - timedelta(days=3))
                     .order_by(TomorrowWatchlist.created_at.desc())
                     .limit(limit)
                 ).all()
@@ -565,7 +589,7 @@ class TradingSchedulerService:
             if not trade.stock_symbol:
                 continue
             metadata = trade.metadata_json or {}
-            if metadata.get("plan_only") and trade.entry_date and trade.entry_date > date.today():
+            if metadata.get("plan_only") and trade.entry_date and trade.entry_date > self._today_local():
                 continue
             symbols.add(trade.stock_symbol)
         return sorted(symbols)
@@ -596,7 +620,7 @@ class TradingSchedulerService:
         return selected
 
     def catch_up_live_session_if_needed(self) -> None:
-        if reason := self._holiday_reason(date.today()):
+        if reason := self._holiday_reason(self._today_local()):
             return
         now = datetime.now(tz=settings.tzinfo)
         if not self._within_intraday_window(now):
@@ -633,12 +657,12 @@ class TradingSchedulerService:
         return False
 
     def catch_up_after_market_if_needed(self) -> None:
-        if reason := self._holiday_reason(date.today()):
+        if reason := self._holiday_reason(self._today_local()):
             return
         now = datetime.now(tz=settings.tzinfo)
         if now.timetz().replace(tzinfo=None) < self._parse_clock(settings.after_market_start):
             return
-        next_session = self.market_calendar.next_trading_day(date.today())
+        next_session = self.market_calendar.next_trading_day(self._today_local())
         if self._has_upcoming_watchlist_batch(next_session):
             return
         if self._after_market_catchup_thread is not None and self._after_market_catchup_thread.is_alive():
@@ -1358,6 +1382,12 @@ class TradingSchedulerService:
 
     def _configure_market_jobs(self) -> None:
         self.market_scheduler.add_job(
+            self.run_global_risk_scan_pre_market,
+            CronTrigger(day_of_week="mon-fri", hour=8, minute=30),
+            id="global-risk-pre-market",
+            replace_existing=True,
+        )
+        self.market_scheduler.add_job(
             self.market_open_preparation,
             CronTrigger(day_of_week="mon-fri", hour=9, minute="0"),
             id="market-open-prep",
@@ -1387,6 +1417,12 @@ class TradingSchedulerService:
             self.after_market_analysis,
             CronTrigger(day_of_week="mon-fri", hour=15, minute=35),
             id="after-market-analysis",
+            replace_existing=True,
+        )
+        self.after_market_scheduler.add_job(
+            self.run_global_risk_scan_after_market,
+            CronTrigger(day_of_week="mon-fri", hour=16, minute=15),
+            id="global-risk-after-market",
             replace_existing=True,
         )
         self.after_market_scheduler.add_job(
@@ -1439,7 +1475,7 @@ class TradingSchedulerService:
         )
 
     def market_open_preparation(self) -> None:
-        if reason := self._holiday_reason(date.today()):
+        if reason := self._holiday_reason(self._today_local()):
             self._notify_holiday_skip(
                 title="Market closed today",
                 body=f"Skipped market preparation because {reason}.",
@@ -1471,7 +1507,7 @@ class TradingSchedulerService:
         self.start_full_universe_news_sync(limit=None, lookback_hours=72, batch_size=25)
 
     def intraday_scan(self) -> None:
-        if reason := self._holiday_reason(date.today()):
+        if reason := self._holiday_reason(self._today_local()):
             self._notify_holiday_skip(
                 title="Intraday scan skipped",
                 body=f"Skipped intraday scan because {reason}.",
@@ -1564,8 +1600,8 @@ class TradingSchedulerService:
                 type(exc).__name__,
                 exc,
             )
-        if reason := self._holiday_reason(date.today()):
-            recommendations = self.generate_after_market_investment_recommendations()
+        if reason := self._holiday_reason(self._today_local()):
+            recommendations = [] if settings.official_investment_cutover_enabled else self.generate_after_market_investment_recommendations()
             self._notify_holiday_skip(
                 title="After-market watchlist skipped",
                 body=f"Skipped watchlist rebuild because {reason}.",
@@ -1576,8 +1612,11 @@ class TradingSchedulerService:
                     notification_type="INVESTMENT_SCAN",
                     title="Holiday investment scan completed",
                     body=(
-                        f"Market is closed for {reason}, but {len(recommendations)} investment recommendations "
-                        "were evaluated using the latest available daily data."
+                        (
+                            f"Market is closed for {reason}, and investment cutover is enabled, so no new investment plans were generated."
+                            if settings.official_investment_cutover_enabled
+                            else f"Market is closed for {reason}, but {len(recommendations)} investment recommendations were evaluated using the latest available daily data."
+                        )
                         + (
                             f" Fundamentals refresh loaded {int(fundamentals_result['loaded'])} snapshots."
                             if fundamentals_result is not None
@@ -1591,10 +1630,11 @@ class TradingSchedulerService:
             return
 
         with session_scope() as session:
-            session.execute(delete(TomorrowWatchlist).where(TomorrowWatchlist.created_date == date.today()))
-        self.paper_trader.clear_planned_watchlist_trades(from_date=date.today())
+            today_local = self._today_local()
+            session.execute(delete(TomorrowWatchlist).where(TomorrowWatchlist.created_date == today_local))
+            self.paper_trader.clear_planned_watchlist_trades(from_date=today_local, signal_type="INTRADAY")
 
-        next_session = self.market_calendar.next_trading_day(date.today())
+            next_session = self.market_calendar.next_trading_day(today_local)
 
         now = datetime.now(tz=settings.tzinfo)
         symbols = self.historical_fetcher.select_symbols(limit=None)
@@ -1691,7 +1731,7 @@ class TradingSchedulerService:
                         watch_price=trigger_price,
                         signal_type=str(item.get("signal_type") or "INTRADAY"),
                         strategy=str(item.get("strategy_name") or (per_stock.best_strategy if per_stock else None)),
-                        created_date=date.today(),
+                    created_date=today_local,
                     )
                 )
             add_notification(
@@ -1705,7 +1745,12 @@ class TradingSchedulerService:
         ranked_symbols = {str(item["symbol"]) for item in ranked}
         watchlist_configs = [config for config in symbols if config.symbol in ranked_symbols]
         self.sync_news_for_symbols(watchlist_configs, lookback_hours=72, max_symbols=20)
-        recommendations = self.generate_after_market_investment_recommendations()
+        if settings.official_investment_cutover_enabled:
+            recommendations: list[dict] = []
+            self._last_investment_scan_error_count = 0
+            self._last_investment_scan_error_examples = []
+        else:
+            recommendations = self.generate_after_market_investment_recommendations()
         error_suffix = ""
         total_watchlist_errors = len(watchlist_errors) + self._last_investment_scan_error_count
         if total_watchlist_errors:
@@ -1718,9 +1763,13 @@ class TradingSchedulerService:
             add_notification(
                 session,
                 notification_type="INVESTMENT_SCAN",
-                title="After-market investment scan completed",
+                title="After-market investment scan completed" if not settings.official_investment_cutover_enabled else "After-market investment cutover deferred",
                 body=(
-                    f"{len(recommendations)} investment recommendations were generated from daily charts."
+                    (
+                        f"{len(recommendations)} investment recommendations were generated from daily charts."
+                        if not settings.official_investment_cutover_enabled
+                        else "Official investment cutover is enabled, so new investment plans will be generated after official quote, market context, Phase 2, and Phase 3 jobs complete."
+                    )
                     + (
                         f" Fundamentals refresh loaded {int(fundamentals_result['loaded'])} snapshots before ranking."
                         if fundamentals_result is not None
@@ -1731,16 +1780,18 @@ class TradingSchedulerService:
                 color="blue",
             )
         logger.info(
-            "After-market analysis completed: watchlist=%s investment_recommendations=%s skipped=%s",
+            "After-market analysis completed: watchlist=%s investment_recommendations=%s skipped=%s cutover_enabled=%s",
             len(ranked),
-            len(recommendations),
+            len(recommendations) if not settings.official_investment_cutover_enabled else "deferred",
             total_watchlist_errors,
+            settings.official_investment_cutover_enabled,
         )
 
     def refresh_official_daily_quote_shadow(self) -> dict[str, object]:
         if not settings.official_investment_shadow_enabled:
             return {"enabled": False}
-        if reason := self._holiday_reason(date.today()):
+        today_local = self._today_local()
+        if reason := self._holiday_reason(today_local):
             logger.info("Skipping official daily quote shadow sync because %s", reason)
             return {"enabled": True, "skipped": True, "reason": reason}
         result = self.official_investment_data_service.refresh_quote_snapshots()
@@ -1770,10 +1821,148 @@ class TradingSchedulerService:
             "summary": summary,
         }
 
+    @staticmethod
+    def _risk_notification_color(risk_level: str) -> str:
+        return {"GREEN": "green", "YELLOW": "orange", "RED": "red"}.get(str(risk_level or "").upper(), "blue")
+
+    def _planned_cutover_risk_levels_for_day(self, planned_for: date) -> list[str]:
+        with session_scope() as session:
+            trades = session.scalars(
+                select(PaperTrade).where(
+                    PaperTrade.signal_type == "INVESTMENT",
+                    PaperTrade.entry_date == planned_for,
+                    PaperTrade.exit_date.is_(None),
+                )
+            ).all()
+        levels = {
+            str((trade.metadata_json or {}).get("global_risk_level") or "").upper()
+            for trade in trades
+            if (trade.metadata_json or {}).get("plan_only")
+            and (trade.metadata_json or {}).get("source_kind") == "official_investment_cutover"
+        }
+        return sorted(level for level in levels if level)
+
+    def run_global_risk_scan_after_market(self) -> dict[str, object]:
+        if not settings.global_risk_scanner_enabled:
+            return {"enabled": False}
+        today_local = self._today_local()
+        if reason := self._holiday_reason(today_local):
+            logger.info("Skipping after-market global risk scan because %s", reason)
+            return {"enabled": True, "skipped": True, "reason": reason}
+        if not self.global_risk_scanner.after_market_inputs_ready(today_local):
+            logger.info("Skipping provisional after-market global risk scan because same-day inputs are not ready yet.")
+            return {
+                "enabled": True,
+                "skipped": True,
+                "reason": "same_day_inputs_not_ready",
+            }
+        result = self.global_risk_scanner.scan(today_local, scan_type="AFTER_MARKET")
+        active = [signal.name for signal in result.signals if signal.severity in {"CAUTION", "BLOCK"}]
+        with session_scope() as session:
+            add_notification(
+                session,
+                notification_type="GLOBAL_RISK",
+                title="After-market global risk scan completed",
+                body=(
+                    f"Risk level: {result.risk_level}; multiplier: {result.position_size_multiplier:.2f}; "
+                    f"active signals: {', '.join(active) or 'none'}. {result.summary_message}"
+                ),
+                color=self._risk_notification_color(result.risk_level),
+            )
+        return {
+            "enabled": True,
+            "risk_level": result.risk_level,
+            "position_size_multiplier": result.position_size_multiplier,
+            "active_signals": active,
+            "summary_message": result.summary_message,
+        }
+
+    def run_global_risk_scan_pre_market(self) -> dict[str, object]:
+        if not settings.global_risk_scanner_enabled:
+            return {"enabled": False}
+        today_local = self._today_local()
+        if reason := self._holiday_reason(today_local):
+            logger.info("Skipping pre-market global risk scan because %s", reason)
+            return {"enabled": True, "skipped": True, "reason": reason}
+        prior_levels = self._planned_cutover_risk_levels_for_day(today_local)
+        result = self.global_risk_scanner.scan(today_local, scan_type="PRE_MARKET")
+        active = [signal.name for signal in result.signals if signal.severity in {"CAUTION", "BLOCK"}]
+        cancelled = 0
+        if result.risk_level == "RED":
+            cancelled = self.official_investment_recommendation_engine.cancel_planned_recommendations_for_day(
+                planned_for=today_local
+            )
+        with session_scope() as session:
+            add_notification(
+                session,
+                notification_type="GLOBAL_RISK",
+                title="Pre-market global risk scan completed",
+                body=(
+                    f"Risk level: {result.risk_level}; multiplier: {result.position_size_multiplier:.2f}; "
+                    f"active signals: {', '.join(active) or 'none'}. "
+                    f"Prior after-market plan risk levels: {', '.join(prior_levels) or 'none'}. "
+                    + (
+                        f"Cancelled {cancelled} planned official investment trade(s) for today due to RED overnight risk."
+                        if result.risk_level == "RED"
+                        else "No planned investment trades were cancelled."
+                    )
+                ),
+                color=self._risk_notification_color(result.risk_level),
+            )
+        return {
+            "enabled": True,
+            "risk_level": result.risk_level,
+            "position_size_multiplier": result.position_size_multiplier,
+            "active_signals": active,
+            "summary_message": result.summary_message,
+            "cancelled_plans": cancelled,
+            "prior_plan_risk_levels": prior_levels,
+        }
+
+    def refresh_official_investment_scores_shadow(self, *, as_of_date: date | None = None) -> dict[str, object]:
+        if not settings.official_investment_shadow_enabled:
+            return {"enabled": False}
+        result = self.investment_scorer.score_universe(as_of_date=as_of_date)
+        resolved_as_of_date = date.fromisoformat(str(result["as_of_date"])) if result.get("as_of_date") else None
+        phase3 = self.refresh_official_investment_gates_shadow(as_of_date=resolved_as_of_date)
+        with session_scope() as session:
+            add_notification(
+                session,
+                notification_type="OFFICIAL_DATA_SHADOW",
+                title="Official investment scores refreshed",
+                body=(
+                    f"Processed {int(result.get('processed') or 0)} symbols for {result.get('as_of_date') or 'latest data'}. "
+                    f"Strong buy: {int(result.get('strong_buy') or 0)}, "
+                    f"watchlist: {int(result.get('watchlist') or 0)}, "
+                    f"no action: {int(result.get('no_action') or 0)}."
+                ),
+                color="blue",
+            )
+        return {**result, "phase3": phase3}
+
+    def refresh_official_investment_gates_shadow(self, *, as_of_date: date | None = None) -> dict[str, object]:
+        if not settings.official_investment_shadow_enabled:
+            return {"enabled": False}
+        result = self.investment_gate_runner.run_universe(as_of_date=as_of_date)
+        logger.info(
+            "Official investment gate shadow batch for %s: strong_buy=%s buy=%s skip=%s blocked_market=%s blocked_sector=%s blocked_earnings=%s blocked_promoter=%s blocked_entry=%s",
+            result.get("as_of_date"),
+            int(result.get("eligible_strong_buy") or 0),
+            int(result.get("buy") or 0),
+            int(result.get("skip") or 0),
+            int(result.get("blocked_by_market_health") or 0),
+            int(result.get("blocked_by_sector_strength") or 0),
+            int(result.get("blocked_by_earnings_proximity") or 0),
+            int(result.get("blocked_by_promoter") or 0),
+            int(result.get("blocked_by_entry_trigger") or 0),
+        )
+        return result
+
     def refresh_official_market_context_shadow(self) -> dict[str, object]:
         if not settings.official_investment_shadow_enabled:
             return {"enabled": False}
-        if reason := self._holiday_reason(date.today()):
+        today_local = self._today_local()
+        if reason := self._holiday_reason(today_local):
             logger.info("Skipping official market-context shadow sync because %s", reason)
             return {"enabled": True, "skipped": True, "reason": reason}
         actions = self.official_investment_data_service.refresh_corporate_actions()
@@ -1781,6 +1970,16 @@ class TradingSchedulerService:
         rebuild = self.official_snapshot_builder.rebuild_daily_snapshot(
             as_of_date=date.fromisoformat(str(market_context["as_of_date"]))
         )
+        scores = self.refresh_official_investment_scores_shadow(
+            as_of_date=date.fromisoformat(str(market_context["as_of_date"]))
+        )
+        cutover_recommendations: list[dict[str, object]] = []
+        cutover_summary: dict[str, object] = {}
+        if settings.official_investment_cutover_enabled:
+            cutover_recommendations = self.generate_after_market_investment_recommendations(
+                as_of_date=date.fromisoformat(str(market_context["as_of_date"]))
+            )
+            cutover_summary = dict(self._last_official_investment_cutover_summary or {})
         summary = self.shadow_comparison_service.compare(
             as_of_date=date.fromisoformat(str(market_context["as_of_date"])),
         )
@@ -1796,11 +1995,47 @@ class TradingSchedulerService:
                 ),
                 color="blue",
             )
+            if settings.official_investment_cutover_enabled:
+                risk_suffix = (
+                    f" Global risk {cutover_summary.get('global_risk_level') or 'UNKNOWN'} "
+                    f"with size multiplier {float(cutover_summary.get('position_size_multiplier') or 0.0):.2f}."
+                )
+                active_signals = list(cutover_summary.get("active_global_signals") or [])
+                if active_signals:
+                    risk_suffix += f" Active signals: {', '.join(active_signals)}."
+                if cutover_summary.get("risk_summary_message"):
+                    risk_suffix += f" {cutover_summary.get('risk_summary_message')}"
+                add_notification(
+                    session,
+                    notification_type="INVESTMENT_SCAN",
+                    title="Official investment cutover completed",
+                    body=(
+                        f"Strong buy candidates: {int(cutover_summary.get('strong_buy_candidates') or 0)}; "
+                        f"Phase 3 approved buys: {int(cutover_summary.get('phase3_buy_candidates') or 0)}; "
+                        f"planned investment trades created: {int(cutover_summary.get('created') or 0)}. "
+                        f"Blocked by market/sector/earnings/promoter/entry: "
+                        f"{int(cutover_summary.get('blocked_by_market_health') or 0)}/"
+                        f"{int(cutover_summary.get('blocked_by_sector_strength') or 0)}/"
+                        f"{int(cutover_summary.get('blocked_by_earnings_proximity') or 0)}/"
+                        f"{int(cutover_summary.get('blocked_by_promoter') or 0)}/"
+                        f"{int(cutover_summary.get('blocked_by_entry_trigger') or 0)}."
+                        + (
+                            " Zero approved buys remained after cutover filtering."
+                            if int(cutover_summary.get("created") or 0) == 0
+                            else ""
+                        )
+                        + risk_suffix
+                    ),
+                    color=self._risk_notification_color(str(cutover_summary.get("global_risk_level") or "BLUE")),
+                )
         return {
             "actions": actions,
             "market_context": market_context,
             "rebuild": rebuild,
+            "scores": scores,
             "summary": summary,
+            "cutover_recommendations": cutover_recommendations,
+            "cutover_summary": cutover_summary,
         }
 
     def refresh_official_weekly_fundamentals_shadow(self) -> dict[str, object]:
@@ -1810,6 +2045,13 @@ class TradingSchedulerService:
             symbol_configs=self.historical_fetcher.select_symbols(limit=None),
         )
         rebuild = self.official_snapshot_builder.rebuild_daily_snapshot()
+        score_as_of_date = date.fromisoformat(str(rebuild["as_of_date"])) if rebuild.get("as_of_date") else None
+        scores = self.refresh_official_investment_scores_shadow(as_of_date=score_as_of_date)
+        cutover_recommendations: list[dict[str, object]] = []
+        cutover_summary: dict[str, object] = {}
+        if settings.official_investment_cutover_enabled and score_as_of_date is not None:
+            cutover_recommendations = self.generate_after_market_investment_recommendations(as_of_date=score_as_of_date)
+            cutover_summary = dict(self._last_official_investment_cutover_summary or {})
         summary = self.shadow_comparison_service.compare(
             missing_bse_mapping_symbols=list(result.get("missing_bse_mappings") or []),
             recovered_by_bse_count=int(result.get("recovered_by_bse") or 0),
@@ -1827,13 +2069,52 @@ class TradingSchedulerService:
                 ),
                 color="blue",
             )
+            if settings.official_investment_cutover_enabled:
+                risk_suffix = (
+                    f" Global risk {cutover_summary.get('global_risk_level') or 'UNKNOWN'} "
+                    f"with size multiplier {float(cutover_summary.get('position_size_multiplier') or 0.0):.2f}."
+                )
+                active_signals = list(cutover_summary.get("active_global_signals") or [])
+                if active_signals:
+                    risk_suffix += f" Active signals: {', '.join(active_signals)}."
+                add_notification(
+                    session,
+                    notification_type="INVESTMENT_SCAN",
+                    title="Official investment cutover refreshed after weekly fundamentals",
+                    body=(
+                        f"Strong buy candidates: {int(cutover_summary.get('strong_buy_candidates') or 0)}; "
+                        f"Phase 3 approved buys: {int(cutover_summary.get('phase3_buy_candidates') or 0)}; "
+                        f"planned investment trades created: {int(cutover_summary.get('created') or 0)}."
+                        + risk_suffix
+                    ),
+                    color=self._risk_notification_color(str(cutover_summary.get("global_risk_level") or "BLUE")),
+                )
         return {
             "weekly": result,
             "rebuild": rebuild,
+            "scores": scores,
             "summary": summary,
+            "cutover_recommendations": cutover_recommendations,
+            "cutover_summary": cutover_summary,
         }
 
-    def generate_after_market_investment_recommendations(self, universe_limit: int | None = None, top_n: int = 10) -> list[dict]:
+    def generate_after_market_investment_recommendations(
+        self,
+        universe_limit: int | None = None,
+        top_n: int = 10,
+        *,
+        as_of_date: date | None = None,
+    ) -> list[dict]:
+        if settings.official_investment_cutover_enabled:
+            summary = self.official_investment_recommendation_engine.rebuild_planned_recommendations(
+                as_of_date=as_of_date,
+                top_n=top_n,
+            )
+            self._last_official_investment_cutover_summary = self.official_investment_recommendation_engine.asdict(summary)
+            self._last_investment_scan_error_count = len(summary.failed_examples)
+            self._last_investment_scan_error_examples = list(summary.failed_examples.values())[:3]
+            return list(summary.recommendations)
+
         now = datetime.now(tz=settings.tzinfo)
         symbols = self.historical_fetcher.select_symbols(limit=None)
         universe_limit = universe_limit or self.INVESTMENT_UNIVERSE_LIMIT
@@ -2105,7 +2386,7 @@ class TradingSchedulerService:
             reverse=True,
         )
         chosen: list[dict] = []
-        next_session = self.market_calendar.next_trading_day(date.today())
+        next_session = self.market_calendar.next_trading_day(self._today_local())
         selection_pool = candidates[:top_n]
         if not selection_pool:
             selection_pool = reserve_candidates[: min(top_n, 5)]

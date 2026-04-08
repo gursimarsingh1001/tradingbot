@@ -147,6 +147,7 @@ class PaperTradeObservation(CamelModel):
 
 def serialize_trade(trade: PaperTrade) -> PaperTradeItem:
     metadata = trade.metadata_json or {}
+    is_plan_only = bool(metadata.get("plan_only"))
     effective_signal_type = trade.signal_type or "INTRADAY"
     product_type = metadata.get("product_type") or ("INTRADAY_ROBO" if effective_signal_type == "INTRADAY" else "DELIVERY")
     leverage_multiplier = (
@@ -159,7 +160,7 @@ def serialize_trade(trade: PaperTrade) -> PaperTradeItem:
         if metadata.get("capital_blocked") is not None
         else ((float(trade.entry_price or 0.0) * float(trade.shares or 0)) / max(leverage_multiplier, 1.0))
     )
-    if metadata.get("plan_only"):
+    if is_plan_only:
         status = str(metadata.get("plan_status") or "PLANNED")
     else:
         status = "OPEN" if trade.exit_date is None else "WIN" if trade.was_profitable else "LOSS"
@@ -197,15 +198,19 @@ def serialize_trade(trade: PaperTrade) -> PaperTradeItem:
         targets_hit=trade.targets_hit,
         entry_date=trade.entry_date,
         exit_date=trade.exit_date,
-        source_kind="WATCHLIST_PLAN" if metadata.get("plan_only") else str(metadata.get("opened_from") or "signal"),
+        source_kind=(
+            str(metadata.get("source_kind") or metadata.get("opened_from") or "WATCHLIST_PLAN")
+            if is_plan_only
+            else str(metadata.get("source_kind") or metadata.get("opened_from") or "signal")
+        ),
         watchlist_reason=metadata.get("watchlist_reason"),
-        planned_for_date=trade.entry_date if metadata.get("plan_only") else None,
+        planned_for_date=trade.entry_date if is_plan_only else None,
         product_type=product_type,
         leverage_multiplier=leverage_multiplier,
         capital_blocked=capital_blocked,
         remaining_shares=int(metadata.get("remaining_shares")) if metadata.get("remaining_shares") is not None else trade.shares,
         initial_shares=int(metadata.get("initial_shares")) if metadata.get("initial_shares") is not None else trade.shares,
-        plan_status=metadata.get("plan_status"),
+        plan_status=metadata.get("plan_status") if is_plan_only else None,
         max_holding_days=max_holding_days,
         holding_horizon_label=holding_horizon_label,
         days_held=days_held,

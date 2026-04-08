@@ -31,16 +31,21 @@ class ConnectionManager:
 
     async def send_snapshot(self, websocket: WebSocket, *, last_notification_id: str | None = None) -> None:
         cache = get_cache()
-        market_data = get_market_data_service().refresh_market_cache(force=False)
-        indices = market_data.get(
+        market_service = get_market_data_service()
+        indices = market_service.refresh_live_benchmarks(force=False).get(
             "indices",
             {
                 "NIFTY50": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
                 "BANKNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
                 "SENSEX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
-                "INDIA_VIX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "FINNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "GIFTNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "MCX_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "BRENT_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "USDINR": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
             },
         )
+        market_data = market_service.refresh_market_cache(force=False)
         watchlist_prices = market_data.get("watchlist_prices", [])
         with session_scope() as session:
             notifications_query = select(Notification).order_by(Notification.created_at.desc()).limit(20)
@@ -76,7 +81,11 @@ class ConnectionManager:
                 "NIFTY50": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
                 "BANKNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
                 "SENSEX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
-                "INDIA_VIX": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "FINNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "GIFTNIFTY": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "MCX_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "BRENT_CRUDE": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
+                "USDINR": {"value": 0.0, "change": 0.0, "change_pct": 0.0},
             },
             "watchlist_prices": watchlist_prices or [],
             "signals": active_signals

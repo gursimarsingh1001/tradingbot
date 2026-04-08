@@ -45,6 +45,8 @@ class Settings(BaseSettings):
     angel_one_client_id: str = Field(default="", alias="ANGEL_ONE_CLIENT_ID")
     angel_one_password: str = Field(default="", alias="ANGEL_ONE_PASSWORD")
     angel_one_totp_secret: str = Field(default="", alias="ANGEL_ONE_TOTP_SECRET")
+    dhan_client_id: str = Field(default="", alias="DHAN_CLIENT_ID")
+    dhan_access_token: str = Field(default="", alias="DHAN_ACCESS_TOKEN")
     news_api_key: str = Field(default="", alias="NEWS_API_KEY")
     alerts_enabled: bool = Field(default=True, alias="ALERTS_ENABLED")
     telegram_bot_token: str = Field(default="", alias="TELEGRAM_BOT_TOKEN")
@@ -65,6 +67,10 @@ class Settings(BaseSettings):
     bse_symbol_mapping_path: Path = Field(
         default=BASE_DIR / "backend" / "config" / "bse_symbol_mappings.json",
         alias="BSE_SYMBOL_MAPPING_PATH",
+    )
+    screener_symbol_override_path: Path = Field(
+        default=BASE_DIR / "backend" / "config" / "screener_symbol_overrides.json",
+        alias="SCREENER_SYMBOL_OVERRIDE_PATH",
     )
     official_sector_index_config_path: Path = Field(
         default=BASE_DIR / "backend" / "config" / "official_sector_indices.json",
@@ -104,6 +110,7 @@ class Settings(BaseSettings):
     news_api_daily_soft_limit: int = Field(default=80, alias="NEWS_API_DAILY_SOFT_LIMIT")
     news_scraper_result_limit: int = Field(default=20, alias="NEWS_SCRAPER_RESULT_LIMIT")
     official_investment_shadow_enabled: bool = Field(default=True, alias="OFFICIAL_INVESTMENT_SHADOW_ENABLED")
+    official_investment_cutover_enabled: bool = Field(default=False, alias="OFFICIAL_INVESTMENT_CUTOVER_ENABLED")
     official_nse_bootstrap_url: str = Field(default="https://www.nseindia.com", alias="OFFICIAL_NSE_BOOTSTRAP_URL")
     official_nse_api_base_url: str = Field(default="https://www.nseindia.com/api", alias="OFFICIAL_NSE_API_BASE_URL")
     official_bse_api_base_url: str = Field(default="https://api.bseindia.com/BseIndiaAPI/api", alias="OFFICIAL_BSE_API_BASE_URL")
@@ -114,6 +121,19 @@ class Settings(BaseSettings):
     official_shadow_weekly_state_key: str = Field(default="official_weekly_sync_state", alias="OFFICIAL_SHADOW_WEEKLY_STATE_KEY")
     official_shadow_summary_key: str = Field(default="official_shadow_summary_state", alias="OFFICIAL_SHADOW_SUMMARY_KEY")
     official_aaa_bond_yield: float = Field(default=7.5, alias="OFFICIAL_AAA_BOND_YIELD")
+    hybrid_data_enabled: bool = Field(default=True, alias="HYBRID_DATA_ENABLED")
+    screener_enabled: bool = Field(default=True, alias="SCREENER_ENABLED")
+    screener_rate_limit_per_second: float = Field(default=1.0, alias="SCREENER_RATE_LIMIT_PER_SECOND")
+    screener_batch_size: int = Field(default=50, alias="SCREENER_BATCH_SIZE")
+    screener_cache_stale_days: int = Field(default=7, alias="SCREENER_CACHE_STALE_DAYS")
+    screener_timeout_seconds: int = Field(default=15, alias="SCREENER_TIMEOUT_SECONDS")
+    moneycontrol_enabled: bool = Field(default=True, alias="MONEYCONTROL_ENABLED")
+    bse_board_meetings_enabled: bool = Field(default=True, alias="BSE_BOARD_MEETINGS_ENABLED")
+    cross_validation_tolerance: float = Field(default=0.10, alias="CROSS_VALIDATION_TOLERANCE")
+    global_risk_scanner_enabled: bool = Field(default=True, alias="GLOBAL_RISK_SCANNER_ENABLED")
+    global_risk_yahoo_timeout_seconds: int = Field(default=15, alias="GLOBAL_RISK_YAHOO_TIMEOUT_SECONDS")
+    global_risk_fii_lookback_days: int = Field(default=10, alias="GLOBAL_RISK_FII_LOOKBACK_DAYS")
+    global_risk_vix_lookback_days: int = Field(default=5, alias="GLOBAL_RISK_VIX_LOOKBACK_DAYS")
     news_intraday_catalyst_lookback_hours: int = Field(default=18, alias="NEWS_INTRADAY_CATALYST_LOOKBACK_HOURS")
     news_intraday_catalyst_limit: int = Field(default=12, alias="NEWS_INTRADAY_CATALYST_LIMIT")
     news_financial_profit_surge_pct: float = Field(default=80.0, alias="NEWS_FINANCIAL_PROFIT_SURGE_PCT")

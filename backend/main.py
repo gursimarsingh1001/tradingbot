@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 
 from backend.api.routes_backtest import router as backtest_router
+from backend.api.investment_api import router as investment_router
 from backend.api.routes_learning import router as learning_router
 from backend.api.routes_market import router as market_router
 from backend.api.routes_news import router as news_router
@@ -53,6 +54,7 @@ app.add_middleware(
 )
 
 app.include_router(market_router)
+app.include_router(investment_router)
 app.include_router(paper_trades_router)
 app.include_router(backtest_router)
 app.include_router(news_router)

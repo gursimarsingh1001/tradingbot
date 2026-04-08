@@ -53,6 +53,10 @@ def start_embedded_schedulers() -> TradingSchedulerService:
     return _embedded_service
 
 
+def get_embedded_scheduler_service() -> TradingSchedulerService | None:
+    return _embedded_service
+
+
 def stop_embedded_schedulers() -> None:
     global _embedded_service
     if _embedded_service is None:

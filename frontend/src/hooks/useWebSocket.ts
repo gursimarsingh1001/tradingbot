@@ -93,12 +93,17 @@ export function useWebSocket() {
         const payload: LivePayload = {
           timestamp: String(raw.timestamp ?? ""),
           indices: Object.fromEntries(
-            Object.entries((raw.indices as Record<string, Record<string, number>>) ?? {}).map(([key, value]) => [
+            Object.entries((raw.indices as Record<string, Record<string, unknown>>) ?? {}).map(([key, value]) => [
               key,
               {
                 value: Number(value.value ?? 0),
                 change: Number(value.change ?? 0),
                 changePct: Number(value.change_pct ?? value.changePct ?? 0),
+                label: (value.label as string | null | undefined) ?? null,
+                source: (value.source as string | null | undefined) ?? null,
+                updatedAt: (value.updated_at as string | null | undefined) ?? (value.updatedAt as string | null | undefined) ?? null,
+                status: (value.status as string | null | undefined) ?? null,
+                isDelayed: Boolean(value.is_delayed ?? value.isDelayed ?? false),
               },
             ]),
           ),

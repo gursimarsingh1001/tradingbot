@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime, timedelta
 from threading import Lock
 from typing import Any
 
@@ -17,9 +17,11 @@ from backend.data.official_api_common import (
     iter_dict_records,
     normalize_key,
 )
+from backend.logging_utils import get_logger
 
 
 settings = get_settings()
+logger = get_logger(__name__)
 
 
 class NSEClient:
@@ -36,10 +38,11 @@ class NSEClient:
     def __init__(self, session: requests.Session | None = None) -> None:
         self.session = session or requests.Session()
         retries = Retry(
-            total=3,
+            total=2,
             backoff_factor=1.0,
-            status_forcelist=(401, 403, 429, 500, 502, 503, 504),
+            status_forcelist=(429, 500, 502, 503, 504),
             allowed_methods=("GET",),
+            raise_on_status=False,
         )
         adapter = HTTPAdapter(max_retries=retries, pool_connections=10, pool_maxsize=10)
         self.session.mount("https://", adapter)
@@ -48,17 +51,39 @@ class NSEClient:
         self._rate_limiter = SimpleRateLimiter(settings.official_nse_rate_limit_seconds)
         self._bootstrap_lock = Lock()
         self._bootstrapped = False
+        self._unavailable_until: datetime | None = None
+        self._unavailable_reason: str | None = None
+
+    def _mark_temporarily_unavailable(self, reason: str, *, minutes: int = 15) -> None:
+        self._unavailable_until = datetime.now(tz=settings.tzinfo) + timedelta(minutes=minutes)
+        self._unavailable_reason = reason
+        logger.warning("Temporarily disabling NSE client for %s minute(s): %s", minutes, reason)
+
+    def _ensure_available(self) -> None:
+        if self._unavailable_until is None:
+            return
+        now = datetime.now(tz=settings.tzinfo)
+        if now >= self._unavailable_until:
+            self._unavailable_until = None
+            self._unavailable_reason = None
+            return
+        raise RuntimeError(self._unavailable_reason or "NSE client temporarily unavailable")
 
     def _bootstrap_session(self, *, force: bool = False) -> None:
+        self._ensure_available()
         with self._bootstrap_lock:
             if self._bootstrapped and not force:
                 return
             self._rate_limiter.wait()
             response = self.session.get(settings.official_nse_bootstrap_url, timeout=20)
+            if response.status_code in {401, 403}:
+                self._mark_temporarily_unavailable(f"NSE bootstrap returned HTTP {response.status_code}")
+                raise RuntimeError(self._unavailable_reason or "NSE bootstrap failed")
             response.raise_for_status()
             self._bootstrapped = True
 
     def _request_json(self, endpoint: str, *, params: dict[str, Any] | None = None) -> dict[str, Any]:
+        self._ensure_available()
         self._bootstrap_session()
         url = f"{settings.official_nse_api_base_url.rstrip('/')}/{endpoint.lstrip('/')}"
         last_error: Exception | None = None
@@ -66,8 +91,11 @@ class NSEClient:
             self._rate_limiter.wait()
             response = self.session.get(url, params=params, timeout=20)
             if response.status_code in {401, 403} and attempt == 0:
-                self._bootstrap_session(force=True)
-                continue
+                self._mark_temporarily_unavailable(
+                    f"NSE API {endpoint} returned HTTP {response.status_code}",
+                    minutes=10,
+                )
+                raise RuntimeError(self._unavailable_reason or f"NSE API {endpoint} unavailable")
             try:
                 response.raise_for_status()
                 payload = response.json()
@@ -106,12 +134,36 @@ class NSEClient:
     def fetch_all_indices(self) -> dict[str, Any]:
         return self._request_json("allIndices")
 
+    def fetch_fii_dii_activity(self) -> list[dict[str, Any]]:
+        payload = self._request_json("fiidiiTradeReact")
+        records = payload.get("data") if isinstance(payload, dict) else []
+        if not isinstance(records, list):
+            records = []
+        normalized: list[dict[str, Any]] = []
+        for record in records:
+            if not isinstance(record, dict):
+                continue
+            category = first_text(record, ("category", "categoryName", "participant", "clientType"))
+            if not category:
+                continue
+            normalized.append(
+                {
+                    "category": category,
+                    "date": first_date(record, ("date", "tradeDate", "dt")),
+                    "buyValue": first_float(record, ("buyValue", "buy", "buyvalue")),
+                    "sellValue": first_float(record, ("sellValue", "sell", "sellvalue")),
+                    "netValue": first_float(record, ("netValue", "net", "netvalue")),
+                }
+            )
+        return normalized
+
     @staticmethod
     def extract_quote_metrics(symbol: str, payload: dict[str, Any]) -> dict[str, Any]:
         return {
             "symbol": symbol.upper(),
             "market_cap": first_float(payload, ("marketCap", "marketcap", "marketCapitalisation", "mcap")),
             "pe_ratio": first_float(payload, ("pe", "peRatio", "peratio", "p/e", "pdsectorpe")),
+            "pb_ratio": first_float(payload, ("pb", "pbRatio", "priceToBook", "priceToBookValue")),
             "dividend_yield": first_float(payload, ("dividendYield", "divyield", "dividendyield")),
             "industry_pe": first_float(payload, ("industryPE", "industryPe", "pdsectorpe", "sectorPE")),
             "week_52_high": first_float(payload, ("high52", "weekHigh52", "yearHigh", "high52w")),
@@ -230,6 +282,7 @@ class NSEClient:
                     "eps_basic": first_float(record, ("eps", "epsBasic", "earningpershare", "basicEps")),
                     "operating_cash_flow": first_float(record, ("operatingCashFlow", "cashFromOperations", "cfo")),
                     "total_debt": first_float(record, ("totalDebt", "borrowings", "debt")),
+                    "total_assets": first_float(record, ("totalAssets", "assets", "totalAsset", "totalasset")),
                     "shareholder_equity": first_float(record, ("shareholderEquity", "equity", "totalEquity", "netWorth")),
                     "capital_employed": first_float(record, ("capitalEmployed",)),
                     "current_assets": first_float(record, ("currentAssets",)),

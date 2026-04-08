@@ -1,9 +1,86 @@
 [
   {
     "sector": "BANKING",
-    "symbol": "BANKNIFTY",
+    "symbol": "Nifty Bank",
     "token": "99926009",
     "exchange": "NSE",
     "tradingSymbol": "Nifty Bank"
+  },
+  {
+    "sector": "IT",
+    "symbol": "Nifty IT",
+    "token": "99926008",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty IT"
+  },
+  {
+    "sector": "PHARMA",
+    "symbol": "Nifty Pharma",
+    "token": "99926023",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Pharma"
+  },
+  {
+    "sector": "AUTO",
+    "symbol": "Nifty Auto",
+    "token": "99926029",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Auto"
+  },
+  {
+    "sector": "FMCG",
+    "symbol": "Nifty FMCG",
+    "token": "99926021",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty FMCG"
+  },
+  {
+    "sector": "METALS",
+    "symbol": "Nifty Metal",
+    "token": "99926030",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Metal"
+  },
+  {
+    "sector": "REALTY",
+    "symbol": "Nifty Realty",
+    "token": "99926018",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Realty"
+  },
+  {
+    "sector": "ENERGY",
+    "symbol": "Nifty Energy",
+    "token": "99926020",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Energy"
+  },
+  {
+    "sector": "INDUSTRIALS",
+    "symbol": "Nifty Infra",
+    "token": "99926019",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Infra"
+  },
+  {
+    "sector": "MEDIA",
+    "symbol": "Nifty Media",
+    "token": "99926031",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Media"
+  },
+  {
+    "sector": "PSU BANK",
+    "symbol": "Nifty PSU Bank",
+    "token": "99926025",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty PSU Bank"
+  },
+  {
+    "sector": "FINANCE",
+    "symbol": "Nifty Fin Service",
+    "token": "99926037",
+    "exchange": "NSE",
+    "tradingSymbol": "Nifty Fin Service"
   }
 ]
